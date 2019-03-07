@@ -1,0 +1,3 @@
+--sort-files
+--nocolor
+--ignore-dir=node_modules/
