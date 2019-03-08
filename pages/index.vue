@@ -10,8 +10,7 @@
       md6
     >
       <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
+				<img :src="icon" alt="图标"/>
       </div>
       <v-card>
         <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>
@@ -62,9 +61,15 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import zyicon from '~/assets/image/zyicon.png'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
 export default {
+	data() {
+		return {
+			icon: zyicon,
+		}
+	},
   components: {
     Logo,
     VuetifyLogo
