@@ -19,4 +19,6 @@ $ yarn start
 $ yarn run generate
 ```
 
+测试
+
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
