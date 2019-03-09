@@ -1,18 +1,10 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
+  <v-layout column justify-center align-center>
+    <v-flex xs12 sm8 md6>
       <div class="text-xs-center">
-				<v-card flat tile d-flex>
-					<v-img aspect-ratio="1" :src="icon" alt="图标"/>
-				</v-card>
+        <v-card flat tile d-flex>
+          <v-img aspect-ratio="1" :src="icon" alt="图标" />
+        </v-card>
       </div>
       <v-card>
         <v-card-title class="headline">欢迎来到我的小站</v-card-title>
@@ -23,24 +15,13 @@
             <em><small>&mdash;zhangYuan</small></em>
           </div>
           <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-          >Nuxt Documentation</a>
+          <a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
           <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-          >Nuxt GitHub</a>
+          <a href="https://github.com/nuxt/nuxt.js" target="_blank">Nuxt GitHub</a>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn
-            color="primary"
-            flat
-            nuxt
-            to="/inspire"
-          >Continue</v-btn>
+          <v-btn color="primary" flat nuxt to="/inspire">Continue</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -48,19 +29,42 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import zyicon from '~/assets/image/zyicon.png'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+  import Logo from '~/components/Logo.vue'
+  import zyicon from '~/assets/image/zyicon.png'
+  import axios from 'axios'
+  import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
-export default {
-	data() {
-		return {
-			icon: zyicon,
-		}
-	},
-  components: {
-    Logo,
-    VuetifyLogo
+  export default {
+    asyncData() {},
+    async fetch() {
+      await axios.get("http://manage.zylike.com/api/subject/all").then(res => res.data)
+        .then(resdata => {
+          const {
+            data
+          } = resdata;
+          console.log({
+            data
+          })
+        })
+    },
+    head() {
+      return {
+        title: 'zylike个人小站',
+        meta: [{
+          hid: 'description',
+          name: 'description',
+          content: '这是一个充满乐趣，刺激，潮流的技术网站'
+        }]
+      }
+    },
+    data() {
+      return {
+        icon: zyicon,
+      }
+    },
+    components: {
+      Logo,
+      VuetifyLogo
+    }
   }
-}
 </script>

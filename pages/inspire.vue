@@ -17,3 +17,18 @@
     </v-flex>
   </v-layout>
 </template>
+
+<script>
+export default {
+    head() {
+      return {
+        title: 'zylike个人小站/inspect',
+        meta: [{
+          hid: 'description',
+          name: 'description',
+          content: '拉了空间的手法俄方'
+        }]
+      }
+    },
+}
+</script>
