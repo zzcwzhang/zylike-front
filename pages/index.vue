@@ -10,27 +10,15 @@
       md6
     >
       <div class="text-xs-center">
-				<img :src="icon" alt="图标"/>
+				<v-card flat tile d-flex>
+					<v-img aspect-ratio="1" :src="icon" alt="图标"/>
+				</v-card>
       </div>
       <v-card>
-        <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>
+        <v-card-title class="headline">欢迎来到我的小站</v-card-title>
         <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>For more information on Vuetify, check out the <a
-            href="https://vuetifyjs.com"
-            target="_blank"
-          >documentation</a>.</p>
-          <p>If you have questions, please join the official <a
-            href="https://chat.vuetifyjs.com/"
-            target="_blank"
-            title="chat"
-          >discord</a>.</p>
-          <p>Find a bug? Report it on the github <a
-            href="https://github.com/vuetifyjs/vuetify/issues"
-            target="_blank"
-            title="contribute"
-          >issue board</a>.</p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
+          <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
+          <p>旧版连接<a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
           <div class="text-xs-right">
             <em><small>&mdash; John Leider</small></em>
           </div>
