@@ -20,7 +20,7 @@
           <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
           <p>旧版连接<a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
           <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+            <em><small>&mdash;zhangYuan</small></em>
           </div>
           <hr class="my-3">
           <a
