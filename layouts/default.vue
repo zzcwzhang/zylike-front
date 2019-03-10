@@ -99,10 +99,15 @@ export default {
           title: 'Welcome',
           to: '/'
         },
+        /* { */
+        /*   icon: 'bubble_chart', */
+        /*   title: 'Inspire', */
+        /*   to: '/inspire' */
+        /* }, */
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'accessibility',
+          title: 'AboutMe',
+          to: '/about'
         },
         {
           icon: 'dashboard',
@@ -118,3 +123,12 @@ export default {
   }
 }
 </script>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+.cfont_kuaile {
+	font-family: 'ZCOOL KuaiLe', cursive, sans-serif;
+}
+</style>
