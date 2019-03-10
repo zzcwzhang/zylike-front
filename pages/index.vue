@@ -8,7 +8,7 @@
         <v-card-title class="headline">欢迎来到我的小站</v-card-title>
         <v-card-text>
           <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
-          <p>旧版连接<a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
+          <p>旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
         </v-card-text>
       </v-card>
     </v-flex>
