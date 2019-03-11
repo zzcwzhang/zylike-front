@@ -1,15 +1,34 @@
 <template>
   <v-layout column justify-center align-center>
-		<v-flex  xs12 sm8 md6 d-flex>
-			<img :src="icon" alt="">
-		</v-flex>
-    <v-flex xs12 sm8 md6>
+    <v-flex xs12 sm8 md6 lg4 xl4 d-flex>
+      <img :src="icon" alt="">
+    </v-flex>
+    <v-flex xs12 sm8 md6 lg4 xl4 d-flex>
       <v-card>
         <v-card-title class="headline">欢迎来到我的小站</v-card-title>
         <v-card-text>
-          <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
-          <p>旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
-        </v-card-text>
+          <p class="display-1">新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
+          <p>本站使用的技术在YouTube上 <a href="https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn" target="_blank">https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn</a>学得，有兴趣的朋友可以去看源视频教程</p>
+					<p class="purple blue--text text--lighten-1">目前该网站可能乱七八糟，一塌糊涂，因为我正拿他做练习^_^ </p>
+          <p class="pink lighten-4 red--text text--darken-4">旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
+					<v-card-text class="hidden-md-and-down">
+						<v-btn>click me</v-btn>
+						<v-btn class="pink white--text">click me</v-btn>
+						<v-btn flat color="pink">click me</v-btn>
+						<v-btn depressed color="pink">click me</v-btn>
+						<v-btn color="pink white--text" depressed>
+							<v-icon left>email</v-icon>
+							<span>Email</span>
+						</v-btn>
+						<v-btn large color="pink white--text" depressed>
+							<span>Email</span>
+							<v-icon large right>email</v-icon>
+						</v-btn>
+						<v-btn fab depressed small dark color="purple">
+							<v-icon>favorite</v-icon>
+						</v-btn>
+					</v-card-text>
+				</v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
@@ -47,6 +66,19 @@
     data() {
       return {
         icon: zyicon,
+        posts: [{
+            title: 'A new Beginning',
+            previewText: 'This will be awesome, dont\'t miss it!',
+            thumbnailUrl: '',
+            id: 'a-new-beginning',
+          },
+          {
+            title: 'A Second Beginning',
+            previewText: 'This will be awesome, dont\'t miss it!',
+            thumbnailUrl: '',
+            id: 'a-second-beginning',
+          },
+        ]
       }
     },
     components: {
