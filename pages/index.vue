@@ -11,23 +11,12 @@
           <p>本站使用的技术在YouTube上 <a href="https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn" target="_blank">https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn</a>学得，有兴趣的朋友可以去看源视频教程</p>
 					<p class="purple blue--text text--lighten-1">目前该网站可能乱七八糟，一塌糊涂，因为我正拿他做练习^_^ </p>
           <p class="pink lighten-4 red--text text--darken-4">旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
-					<v-card-text class="hidden-md-and-down">
-						<v-btn>click me</v-btn>
-						<v-btn class="pink white--text">click me</v-btn>
-						<v-btn flat color="pink">click me</v-btn>
-						<v-btn depressed color="pink">click me</v-btn>
-						<v-btn color="pink white--text" depressed>
-							<v-icon left>email</v-icon>
-							<span>Email</span>
-						</v-btn>
-						<v-btn large color="pink white--text" depressed>
-							<span>Email</span>
-							<v-icon large right>email</v-icon>
-						</v-btn>
-						<v-btn fab depressed small dark color="purple">
-							<v-icon>favorite</v-icon>
-						</v-btn>
-					</v-card-text>
+					<v-btn class="hidden-md-and-down">
+						hidden-md-and-down
+					</v-btn>
+					<v-btn class="hidden-md-and-up">
+						hidden-md-and-up
+					</v-btn>
 				</v-card-text>
       </v-card>
     </v-flex>
