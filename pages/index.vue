@@ -3,7 +3,7 @@
     <v-flex xs12 sm8 md6 lg4 xl4 d-flex>
       <img :src="icon" alt="">
     </v-flex>
-    <v-flex xs12 sm8 md6 lg4 xl4 d-flex>
+    <v-flex xs12 sm8 md6 lg4>
       <v-card>
         <v-card-title class="headline">欢迎来到我的小站</v-card-title>
         <v-card-text>
