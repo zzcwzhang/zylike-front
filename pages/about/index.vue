@@ -1,32 +1,55 @@
 <template>
   <section id="about-page">
-    <h1 class="mx-4 mb-4 subheading grey--text">Hi , that's us!</h1>
-    <strong>我们是一群充满活力和才华的人，写着关于技术的博客</strong>
-    <p>We're a bunch of highly motivated and talented people,blogging about tech stuff.</p>
-    <p class="success">this is successraph</p>
-    <p class="warning">this is warn paraph</p>
-    <p class="info">this is info paraph</p>
-    <p class="error">this is error paraph</p>
-    <v-container class="my-5" >
-      <p>
-        Sit numquam ipsum vero hic ipsam Maiores sed sed officia dolorem eaque molestias Iste excepturi pariatur totam praesentium totam ab doloribus distinctio, animi? Rem ea quam vel est recusandae quaerat
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-        vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-        no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      </p>
-    </v-container>
+		<h1>过往项目</h1>
+		<v-container>
+			<v-card flat v-for="project in projects" :key="project.title">
+				<v-layout row wrap :class="`pa-3 project ${project.status}`">
+					<v-flex sx12 md6>
+						<div class="caption grey--text">Project title</div>
+						<div>{{project.title}}</div>
+					</v-flex>
+					<v-flex xs6 sm4 md2>
+						<div class="caption grey--text">Person</div>
+						<div>{{project.person}}</div>
+					</v-flex>
+					<v-flex xs6 sm4 md2>
+						<div class="caption grey--text">Due by</div>
+						<div>{{project.due}}</div>
+					</v-flex>
+					<v-flex xs2 sm4 md2>
+						<div class="caption grey--text">Status</div>
+						<div>{{ project.status }}</div>
+					</v-flex>
+				</v-layout>
+				<v-divider></v-divider>
+			</v-card>
+		</v-container>
   </section>
 </template>
 
 <script>
   export default {
-    components: {}
+		data() {
+			return {
+				projects: [
+					{ title: 'Design a new website', person: 'The Net Ninja', due: '126 Jan 2019', status:'ongoing'},
+					{ title: 'website server', person: 'me', due: '126 Jan 2019', status:'overdue'},
+					{ title: 'JumpStart', person: 'babazixun', due: '2018', status:'complete'},
+					{ title: 'HongXue/Caishang', person: 'babazixun', due: '2018', status:'complete'},
+				]
+			}
+		}
   }
 </script>
 
 <style>
-
+.project.complete {
+	border-left: 4px solid #3cd1c2;
+}
+.project.ongoing {
+	border-left: 4px solid orange;
+}
+.project.overdue {
+	border-left: 4px solid red;
+}
 </style>
