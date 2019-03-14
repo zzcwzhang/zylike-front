@@ -1,6 +1,14 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
+			<v-layout column align-center>
+				<v-flex class="mt-5">
+					<v-avatar size="100">
+						<img src="/avatar/zhangyuan.png" alt="">
+					</v-avatar>
+				</v-flex>
+				<!-- <p class="subheading mt-1">张远</p> -->
+			</v-layout>
       <v-list>
         <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-tile-action>
@@ -76,6 +84,11 @@
             icon: 'dashboard',
             title: 'Recipes',
             to: '/recipes'
+          },
+          {
+            icon: 'people',
+            title: 'Team',
+            to: '/team'
           }
         ],
         miniVariant: false,
