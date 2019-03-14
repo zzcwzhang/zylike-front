@@ -1,8 +1,8 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
-      <v-layout column align-center class="hidden-md-and-down">
-        <v-flex class="mt-5">
+      <v-layout column align-center>
+        <v-flex class="mt-5 hidden-md-and-down">
           <v-avatar size="100">
             <img src="/avatar/zhangyuan.png" alt="">
           </v-avatar>
