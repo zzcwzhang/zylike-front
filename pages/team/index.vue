@@ -28,8 +28,8 @@
 									<img contain height="125px" src="/avatar/yunwei.png">
 							</v-responsive>
 							<v-card-text class="subheading">
-								<div class="subheading">  特别运维组的队员们  </div>
-								<div class="grey--text"> 依次为祁子昂，孟翔飞, 鹿文庆，王松</div>
+								<div class="subheading">  特别感谢运维组的队员们  </div>
+								<div class="grey--text"> 依次为祁子昂，孟翔飞, 鹿文庆，王松,没有你们开发组无法正常工作</div>
 							</v-card-text>
 						</v-card>
 					</v-flex>
