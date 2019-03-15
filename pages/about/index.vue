@@ -2,7 +2,7 @@
   <section id="about-page">
 		<v-container>
 			<h1>自我介绍</h1>
-			<p class="ma-3">你好我是张远,希望下面的内容能解决你对我的信息不对称</p>
+			<p class="ma-3">各种测试中</p>
 			<h1>过往项目</h1>
 			<v-layout row class="mb-3">
 				<v-tooltip top>

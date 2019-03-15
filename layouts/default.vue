@@ -113,11 +113,11 @@
             title: 'Welcome',
             to: '/'
           },
-          /* { */
-          /*   icon: 'bubble_chart', */
-          /*   title: 'Inspire', */
-          /*   to: '/inspire' */
-          /* }, */
+					{
+						icon: 'reorder',
+						title: 'Article',
+						to: '/article'
+					},
           {
             icon: 'accessibility',
             title: 'AboutMe',
