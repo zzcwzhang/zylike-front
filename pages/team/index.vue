@@ -22,7 +22,7 @@
 							</v-card-actions>
 						</v-card>
 					</v-flex>
-					<v-flex xs12a sm6 md6>
+					<v-flex xs12 sm6 md6>
 						<v-card class="text-xs-center ma-3">
 							<v-responsive class="pt-4">
 									<img contain height="125px" src="/avatar/yunwei.png">
