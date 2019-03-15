@@ -28,6 +28,11 @@ module.exports = {
         href:
           'https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe'
       },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61'
+      },
     ]
   },
 
