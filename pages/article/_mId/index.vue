@@ -1,5 +1,6 @@
 <template>
 		<div id="normal">
+			Normal Article
 		</div>
 </template>
 

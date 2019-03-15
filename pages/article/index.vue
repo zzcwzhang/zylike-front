@@ -7,20 +7,7 @@
 					v-for="md in topTen"
 					:key="md.mid"
 					xs12 sm6 md6 lg4>
-					<v-hover>
-						<v-card
-							slot-scope="{ hover }"
-							:class="`ma-3 elevation-${hover ? 12 : 2}`"
-							>
-							<v-card-title primary-title>
-								<div>
-									<h3 class="headline mb-0">{{md.title}}</h3>
-									<p>更新于：{{ fromNow(md.updateTime)}}</p>
-									<p>创建于：{{ formatTime(md.createTime)}}</p>
-								</div>
-							</v-card-title>
-						</v-card>
-					</v-hover>
+					<ArticleTitle :md=md></ArticleTitle>
 				</v-flex>
 			</v-layout>
 		</v-container>
@@ -29,11 +16,15 @@
 
 <script>
 import axios from 'axios';
-import moment from 'moment';
+import ArticleTitle from '@/components/ArticleTitle';
 import _ from 'lodash';
-moment.locale('zh-cn');
+
+
 export default {
 	name: 'article',
+	components: {
+		ArticleTitle,
+	},
 	async asyncData() {
 		const res = await axios.get('https://manage.zylike.com/api/article/list');
 		const resdata = res.data;
@@ -45,14 +36,6 @@ export default {
 			return _.slice(this.data, 0, 10);
 		},
 	},
-	methods: {
-		fromNow(in_time) {
-			return moment(in_time).fromNow();
-		},
-		formatTime(in_time) {
-			return moment(in_time).format('YYYY年MM月DD日');
-		}
-	}
 };
 </script>
 
