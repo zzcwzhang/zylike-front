@@ -129,11 +129,11 @@
             title: 'AboutMe',
             to: '/about'
           },
-          {
-            icon: 'dashboard',
-            title: 'Recipes',
-            to: '/recipes'
-          },
+          /* { */
+          /*   icon: 'dashboard', */
+          /*   title: 'Recipes', */
+          /*   to: '/recipes' */
+          /* }, */
           {
             icon: 'people',
             title: 'Team',

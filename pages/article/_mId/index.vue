@@ -1,5 +1,5 @@
 <template>
-  <div id="normal">
+  <div>
 		<v-container>
 			<v-layout row justify-center align-center>
 				<v-flex sx12 md8 lg6>
@@ -17,7 +17,6 @@
   export default {
     name: 'normal',
     mounted() {
-      /* console.log(this.$route.params) */
     },
     async asyncData(context) {
       const {
@@ -32,13 +31,8 @@
 				return data[0];
 			} else {
 				const { info } = res.data;
-				console.log(info);
 				return false;
 			}
     },
   };
 </script>
-
-<style scoped>
-  #normal {}
-</style>
