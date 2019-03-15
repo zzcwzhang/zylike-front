@@ -22,21 +22,12 @@
       params,
       error
     }) {
-      console.log({
-        error,
-        params
-      })
       const mid = _.get(params, 'mid');
       if (!!mid) {
 				const res = await axios.post('https://manage.zylike.com/api/article/normal', { mid });
-        const {
-          success
-        } = res.data;
-				if (success&&res.data.length>0) {
-          const {
-            data
-          } = res.data;
-          return data[0];
+				const resdata = res.data;
+				if (resdata.success&&resdata.data.length > 0) {
+          return resdata.data[0];
         } else {
           const {
             info
