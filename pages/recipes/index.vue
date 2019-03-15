@@ -1,13 +1,20 @@
 <template>
   <section class="recipes">
-		<Recipe
-			v-for="recipe in recipes"
-			:previewText="recipe.previewText"
-			:title="recipe.title"
-			:id="recipe.id"
-			:key="recipe.id"
-			:thumbnail="recipe.thumbnail"
-			></Recipe>
+		<v-layout column justify-center align-center>
+			<v-flex xs12 md6>
+				<h1 class="grey--text">该页模拟网络延迟1.5秒</h1>
+			</v-flex>
+			<v-flex xs12 md6>
+				<Recipe
+					v-for="recipe in recipes"
+					:previewText="recipe.previewText"
+					:title="recipe.title"
+					:id="recipe.id"
+					:key="recipe.id"
+					:thumbnail="recipe.thumbnail"
+					></Recipe>
+			</v-flex>
+		</v-layout>
   </section>
 </template>
 

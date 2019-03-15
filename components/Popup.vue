@@ -6,9 +6,9 @@
 				<h2>留言条</h2>
 			</v-card-title>
 			<v-card-text>
-				<v-form class="px-3">
-					<v-text-field label="标题" v-model="title" prepend-icon="folder"></v-text-field>
-					<v-textarea label="内容" v-model="content" prepend-icon="edit"></v-textarea>
+				<v-form class="px-3" ref="form">
+					<v-text-field label="标题" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
+					<v-textarea label="内容" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
 
 					<v-menu
 						lazy
@@ -35,7 +35,7 @@
 
 					</v-menu>
 
-					<v-btn flat class="success mx-0 mt-3">添加留言</v-btn>
+					<v-btn flat class="success mx-0 mt-3" @click="submit">添加留言</v-btn>
 				</v-form>
 			</v-card-text>
 		</v-card>
@@ -51,11 +51,19 @@
 				content: '',
 				date: new Date().toISOString().substr(0, 10),
 				menu: false,
+				inputRules: [
+					v => v.length >= 3 || '最少输入3个单词',
+				]
 			}
 		},
 		methods: {
 			submit() {
-				console.log(this.title, this.content);
+				const fm = this.$refs.form;
+				if(fm.validate()) {
+					console.log(this.title, this.content);
+				} else {
+					console.log('no validate')
+				}
 			}
 		}
 	};
