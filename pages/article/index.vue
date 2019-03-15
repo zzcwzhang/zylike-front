@@ -7,7 +7,7 @@
 					v-for="md in topTen"
 					:key="md.mid"
 					xs12 sm6 md6 lg4>
-					<ArticleTitle :md=md></ArticleTitle>
+					<ArticleTitle :md="md"></ArticleTitle>
 				</v-flex>
 			</v-layout>
 		</v-container>
