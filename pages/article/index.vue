@@ -35,7 +35,7 @@ moment.locale('zh-cn');
 export default {
 	name: 'article',
 	async asyncData() {
-		const res = await axios.get('http://manage.zylike.com/api/article/list');
+		const res = await axios.get('https://manage.zylike.com/api/article/list');
 		const resdata = res.data;
 		const data = resdata.data;
 		return resdata;
