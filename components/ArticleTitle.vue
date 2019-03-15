@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`/article/${mid}`">
+  <nuxt-link :to="`/article/${md.mid}`">
     <v-hover>
       <v-card slot-scope="{ hover }" :class="`ma-3 elevation-${hover ? 12 : 2}`">
         <v-card-title primary-title>
