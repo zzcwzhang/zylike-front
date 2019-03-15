@@ -23,7 +23,7 @@
         mid
       } = context.params;
 			const param = { mid };
-			console.log(param);
+			console.log({ param });
       const res = await axios.post('https://manage.zylike.com/api/article/normal', param);
 			const { success } = res.data;
 			if( success ) {
