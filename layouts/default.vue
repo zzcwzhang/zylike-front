@@ -1,6 +1,8 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
+    <v-navigation-drawer
+			:hide-overlay="true"
+		 	v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
