@@ -4,7 +4,8 @@
       <v-layout row justify-center align-center>
         <v-flex sx12 md8 lg6>
           <div>
-            {{content}}
+						<mavon-editor v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
+							</mavon-editor>
           </div>
         </v-flex>
       </v-layout>
@@ -13,10 +14,16 @@
 </template>
 
 <script>
+	import { mavonEditor } from 'mavon-editor';
+	/* import 'mavon-editor/dist/css/index.css'; */
+
   import _ from 'lodash';
   import axios from 'axios';
   export default {
     name: 'normal',
+		components: {
+			mavonEditor,
+		},
     mounted() {},
     async asyncData({
       params,
@@ -44,3 +51,10 @@
     },
   };
 </script>
+
+<style scoped>
+.mavonEditor {
+  width: 100%;
+  height: 100%;
+}
+</style>

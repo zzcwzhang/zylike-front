@@ -54,6 +54,7 @@ module.exports = {
   plugins: [
     '@/plugins/vuetify',
 		'@/plugins/sentry',
+		// { src: '@/plugins/vue-mavon-editor', ssr: false}, // 全局注册
   ],
 
   /*
