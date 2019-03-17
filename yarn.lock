@@ -3666,9 +3666,9 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mavon-editor@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/mavon-editor/-/mavon-editor-2.7.1.tgz#18c8f09af9b282c9648a6401548c6625e1e3bbad"
+mavon-editor-uncolor@^2.7.2:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/mavon-editor-uncolor/-/mavon-editor-uncolor-2.7.3.tgz#82359e6f71eca9d7651e75c9d999cf2de59e0372"
   dependencies:
     highlight.js "^9.11.0"
     highlight.js-async-webpack "^1.0.4"

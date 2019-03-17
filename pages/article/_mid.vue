@@ -2,11 +2,16 @@
   <div>
     <v-container>
       <v-layout row justify-center align-center>
-        <v-flex sx12 md8 lg6>
-          <div>
-						<mavon-editor v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
-							</mavon-editor>
-          </div>
+        <v-flex sx12 md10>
+					<v-card>
+						<mavon-editor
+						 	v-model="content"
+						 	:subfield="false"
+							codeStyle="dark"
+						 	:toolbarsFlag="false"
+						 	defaultOpen="preview" />
+						</mavon-editor>
+					</v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -14,7 +19,7 @@
 </template>
 
 <script>
-	import { mavonEditor } from 'mavon-editor';
+	import { mavonEditor } from 'mavon-editor-uncolor';
 	/* import 'mavon-editor/dist/css/index.css'; */
 
   import _ from 'lodash';
@@ -51,10 +56,15 @@
     },
   };
 </script>
+<style>
 
-<style scoped>
-.mavonEditor {
-  width: 100%;
-  height: 100%;
+.v-note-wrapper {
+background: #30303 !important;
 }
+.markdown-body {
+background: #30303 !important;
+}
+
+
 </style>
+
