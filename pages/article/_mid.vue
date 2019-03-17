@@ -28,7 +28,7 @@
     },
 		computed: {
 			contentComponent() {
-				return !process.browser ? mavonEditor : serverContentShow;
+				return process.browser ? mavonEditor : serverContentShow;
 			}
 		},
     async asyncData({
