@@ -1,34 +1,36 @@
 <template>
-  <div>
     <v-container>
       <v-layout row justify-center align-center>
         <v-flex sx12 md10>
-            <mavon-editor v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
-            </mavon-editor>
+					<div class="room">
+						<component :is="contentComponent" v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
+            </component>
+					</div>
         </v-flex>
       </v-layout>
     </v-container>
-  </div>
 </template>
 
 <script>
-  /* import { */
-  /*   mavonEditor */
-  /* } from 'mavon-editor-uncolor'; */
-  /* import 'mavon-editor/dist/css/index.css'; */
+	import { mavonEditor } from 'mavon-editor-uncolor';
+	import serverContentShow from '@/components/serverContentShow';
 
   import _ from 'lodash';
   import axios from 'axios';
+
   export default {
     name: 'normal',
-    components: {
-      /* mavonEditor, */
-    },
+		created() {
+		},
     data() {
       return {
       };
     },
-    mounted() {},
+		computed: {
+			contentComponent() {
+				return !process.browser ? mavonEditor : serverContentShow;
+			}
+		},
     async asyncData({
       params,
       error
@@ -58,11 +60,8 @@
   };
 </script>
 <style>
-  .v-note-wrapper {
-    background: #30303 !important;
-  }
-
-  .markdown-body {
-    background: #30303 !important;
-  }
+	.room {
+		position: relative;
+		z-index: 4;
+	}
 </style>
