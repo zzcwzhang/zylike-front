@@ -97,14 +97,8 @@
 </template>
 
 <script>
-  import * as Sentry from '@sentry/browser';
   import Popup from '@/components/Popup';
   export default {
-    created() {
-      Sentry.init({
-        dns: 'https://fc42e71dc6df4b94baf0a714e7ab5b83@sentry.io/1416522'
-      });
-    },
     components: {
       Popup,
     },
