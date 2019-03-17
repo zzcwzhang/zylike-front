@@ -3,10 +3,8 @@
     <v-container>
       <v-layout row justify-center align-center>
         <v-flex sx12 md10>
-          <v-card>
             <mavon-editor v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
             </mavon-editor>
-          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -14,9 +12,9 @@
 </template>
 
 <script>
-  import {
-    mavonEditor
-  } from 'mavon-editor-uncolor';
+  /* import { */
+  /*   mavonEditor */
+  /* } from 'mavon-editor-uncolor'; */
   /* import 'mavon-editor/dist/css/index.css'; */
 
   import _ from 'lodash';
@@ -24,7 +22,7 @@
   export default {
     name: 'normal',
     components: {
-      mavonEditor,
+      /* mavonEditor, */
     },
     data() {
       return {
