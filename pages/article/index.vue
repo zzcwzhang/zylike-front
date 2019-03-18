@@ -33,7 +33,8 @@ export default {
 	},
 	computed: {
 		topTen() {
-			return _.slice(this.data, 0, 10);
+			/* return _.slice(this.data, 0, 10); */
+			return this.data;
 		},
 	},
 };
