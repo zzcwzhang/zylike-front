@@ -16,6 +16,9 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: "技术，分享，前端，后端，运维，服务器，人生，阅读，技术英语, 设计" }
     ],
+		script: [
+			{ src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61' },
+		],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
@@ -27,11 +30,6 @@ module.exports = {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe'
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61'
       },
     ]
   },
@@ -54,6 +52,7 @@ module.exports = {
   plugins: [
     '@/plugins/vuetify',
 		'@/plugins/sentry',
+		'@/plugins/baidu',
 		/* { src: '@/plugins/vue-mavon-editor', ssr: true}, // 全局注册,ssr:false保证服务器端不会渲染，从而避免document或window找不到的bug */
   ],
 
