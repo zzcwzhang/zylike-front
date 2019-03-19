@@ -1,46 +1,58 @@
 <template>
-    <v-container>
-      <v-layout row justify-center align-center>
-        <v-flex sx12 md10>
-					<div class="room">
-						<component :is="contentComponent" v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
-            </component>
-					</div>
-        </v-flex>
-      </v-layout>
-    </v-container>
+  <v-container>
+    <v-layout row justify-center align-center>
+      <v-flex sx12 md10>
+        <div class="room">
+          <component ref="test" :is="contentComponent" v-model="content" :subfield="false" :toolbarsFlag="false" defaultOpen="preview" />
+          </component>
+        </div>
+      </v-flex>
+    </v-layout>
+    <v-layout column class="follow" style="z-index: 2000">
+      <v-btn fab @click="backToTop">
+        <v-icon>vertical_align_top</v-icon>
+      </v-btn>
+      <NuxtLink to="/article">
+        <v-btn fab>
+          <v-icon>reply</v-icon>
+        </v-btn>
+      </NuxtLink>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-	import { mavonEditor } from 'mavon-editor-uncolor';
-	import serverContentShow from '@/components/serverContentShow';
+  import {
+    mavonEditor
+  } from 'mavon-editor-uncolor';
+  import serverContentShow from '@/components/serverContentShow';
 
   import _ from 'lodash';
   import axios from 'axios';
 
   export default {
     name: 'normal',
-		created() {
-		},
+    created() {},
     data() {
       return {
-      };
+				/* step: 50, */
+			};
     },
-		computed: {
-			contentComponent() {
-				return process.browser ? mavonEditor : serverContentShow;
-			}
-		},
-		head() {
-			return {
-				title: this.title,
-				meta: [{
-					hid: 'description',
-					name: 'description',
-					content: this.tags.join(','),
-				}]
-			}
-		},
+    computed: {
+      contentComponent() {
+        return process.browser ? mavonEditor : serverContentShow;
+      }
+    },
+    head() {
+      return {
+        title: this.title,
+        meta: [{
+          hid: 'description',
+          name: 'description',
+          content: this.tags.join(','),
+        }]
+      }
+    },
     async asyncData({
       params,
       error
@@ -67,11 +79,29 @@
         }
       }
     },
+    methods: {
+      backToTop() {
+        if ( process.client ) {
+					document.documentElement.scrollTop = 0
+					return;
+        }
+      }
+    }
   };
 </script>
 <style>
-	.room {
-		position: relative;
-		z-index: 4;
-	}
+  .room {
+    position: relative;
+    z-index: 4;
+  }
+
+  .follow {
+    position: fixed;
+    bottom: 50px;
+    right: 9px;
+  }
+
+  a {
+    text-decoration: none;
+  }
 </style>

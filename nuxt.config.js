@@ -3,8 +3,23 @@ const pkg = require('./package')
 
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
+const axios = require('axios');
+
 module.exports = {
   mode: 'universal',
+
+	// 动态路由
+	generate: {
+		routes: function () {
+		const res = await axios.get('https://manage.zylike.com/api/article/list')
+		.then((res) => res.data).then( (resdata) => {
+			const { data } = resdata;
+			return data.map( md => {
+				return `/article/${md.mid}`;
+			})
+		})
+		}
+	}
 
   /*
   ** Headers of the page
