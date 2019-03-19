@@ -91,6 +91,13 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+		<transition name="fade">
+		<div class="sysAlertRoom" v-if="sysAlert">
+			<v-alert :value="sysAlert" :type="sysAlertContent.type">
+				{{sysAlertContent.info}}
+			</v-alert>
+		</div>
+		</transition>
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
     </v-footer>
@@ -103,6 +110,15 @@
     components: {
       Popup,
     },
+
+		computed: {
+			sysAlert() {
+				return this.$store.state.sys_alert;
+			},
+			sysAlertContent() {
+				return this.$store.state.sys_alert_content;
+			},
+		},
 
     data() {
       return {
@@ -151,4 +167,24 @@
   .cfont_kuaile {
     font-family: 'ZCOOL KuaiLe', cursive, sans-serif;
   }
+	.sysAlertRoom {
+		display: flex;
+		flex-direction: row;
+		align-content: center;
+		justify-content: center;
+		z-index:2038;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100vw;
+	}
+	.sysAlert {
+	}
+	.fade-enter-active, .fade-leave-active {
+		transition: all .5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+		opacity: 0;
+		transform: translateY(30px);
+	}
 </style>

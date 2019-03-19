@@ -9,7 +9,8 @@
 				<v-form class="px-3" ref="form">
 					<v-text-field label="标题" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
 					<v-textarea label="内容" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
-					<v-text-field label="联系方式" v-model="contactWay" prepend-icon="question_answer" :rules="inputRules"></v-text-field>
+					<v-text-field
+						label="联系方式(最好是邮箱,QQ)" v-model="contactWay" prepend-icon="question_answer" :rules="inputRules"></v-text-field>
 
 					<v-menu
 						lazy
@@ -71,10 +72,12 @@
 						content: this.content,
 						contactWay: this.contactWay,
 					}).then( res => res.data).then (resdata => {
-						console.log(resdata);
 						if(resdata.success) {
 							this.loading = false;
 							this.dialog = false;
+							this.$store.dispatch('sysAlert', {
+								info: '操作成功,感谢您的反馈!',
+							});
 						}
 					});
 				} else {
