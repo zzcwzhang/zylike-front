@@ -1,5 +1,5 @@
 <template>
-	<v-dialog max-width="600px">
+	<v-dialog max-width="600px" v-model="dialog">
 		<v-btn flat slot="activator" class="success">给我留言</v-btn>
 		<v-card>
 			<v-card-title>
@@ -9,6 +9,7 @@
 				<v-form class="px-3" ref="form">
 					<v-text-field label="标题" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
 					<v-textarea label="内容" v-model="content" prepend-icon="edit" :rules="inputRules"></v-textarea>
+					<v-text-field label="联系方式" v-model="contactWay" prepend-icon="question_answer" :rules="inputRules"></v-text-field>
 
 					<v-menu
 						lazy
@@ -35,7 +36,7 @@
 
 					</v-menu>
 
-					<v-btn flat class="success mx-0 mt-3" @click="submit">添加留言</v-btn>
+					<v-btn :loading="loading" flat class="success mx-0 mt-3" @click="submit">添加留言</v-btn>
 				</v-form>
 			</v-card-text>
 		</v-card>
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
 	export default {
 		name: '',
 		data() {
@@ -51,16 +53,30 @@
 				content: '',
 				date: new Date().toISOString().substr(0, 10),
 				menu: false,
+				contactWay: '',
 				inputRules: [
 					v => v.length >= 3 || '最少输入3个单词',
-				]
+				],
+					loading: false,
+					dialog: true,
 			}
 		},
 		methods: {
 			submit() {
+				this.loading = true;
 				const fm = this.$refs.form;
 				if(fm.validate()) {
-					console.log(this.title, this.content);
+					axios.post('https://manage.zylike.com/api/comment/save', {
+						tagName: this.title,
+						content: this.content,
+						contactWay: this.contactWay,
+					}).then( res => res.data).then (resdata => {
+						console.log(resdata);
+						if(resdata.success) {
+							this.loading = false;
+							this.dialog = false;
+						}
+					});
 				} else {
 					console.log('no validate')
 				}
