@@ -31,6 +31,16 @@
 				return process.browser ? mavonEditor : serverContentShow;
 			}
 		},
+		head() {
+			return {
+				title: this.title,
+				meta: [{
+					hid: 'description',
+					name: 'description',
+					content: this.tags.join(','),
+				}]
+			}
+		},
     async asyncData({
       params,
       error
