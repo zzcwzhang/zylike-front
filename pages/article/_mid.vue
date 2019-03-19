@@ -9,11 +9,11 @@
       </v-flex>
     </v-layout>
     <v-layout column class="follow" style="z-index: 2000">
-      <v-btn fab @click="backToTop">
+      <v-btn small fab @click="backToTop">
         <v-icon>vertical_align_top</v-icon>
       </v-btn>
       <NuxtLink to="/article">
-        <v-btn fab>
+        <v-btn small fab>
           <v-icon>reply</v-icon>
         </v-btn>
       </NuxtLink>
@@ -92,12 +92,13 @@
 <style>
   .room {
     position: relative;
-    z-index: 4;
+    z-index: 1;
+		padding-bottom: 30vh;
   }
 
   .follow {
     position: fixed;
-    bottom: 50px;
+    bottom: 30px;
     right: 9px;
   }
 
