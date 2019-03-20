@@ -9,14 +9,7 @@
         <v-card-text>
           <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
           <p>本站使用的技术在YouTube上 <a href="https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn" target="_blank">这里</a>学得，有兴趣的朋友可以去看源视频教程</p>
-					<p class="purple blue--text text--lighten-1">目前该网站可能乱七八糟，一塌糊涂，因为我正拿他做练习^_^ </p>
-          <p class="pink lighten-4 red--text text--darken-4">旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
-					<v-btn class="hidden-md-and-down">
-						hidden-md-and-down
-					</v-btn>
-					<v-btn class="hidden-md-and-up">
-						hidden-md-and-up
-					</v-btn>
+          <p>旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
 				</v-card-text>
       </v-card>
     </v-flex>
@@ -30,18 +23,6 @@
   import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
   export default {
-    asyncData() {},
-    async fetch() {
-      /* await axios.get("http://manage.zylike.com/api/subject/all").then(res => res.data) */
-      /*   .then(resdata => { */
-      /*     const { */
-      /*       data */
-      /*     } = resdata; */
-      /*     console.log({ */
-      /*       data */
-      /*     }) */
-      /*   }) */
-    },
     /* head() { */
     /*   return { */
     /*     title: 'zylike个人小站', */

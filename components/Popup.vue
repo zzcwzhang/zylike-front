@@ -59,7 +59,7 @@
 					v => v.length >= 3 || '最少输入3个单词',
 				],
 					loading: false,
-					dialog: true,
+					dialog: false,
 			}
 		},
 		methods: {
