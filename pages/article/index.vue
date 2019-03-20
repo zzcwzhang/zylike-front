@@ -59,9 +59,9 @@ export default {
 				const subjectArray = _.get(item, 'subject');
 				if(_.isArray(subjectArray)&&subjectArray.length>0) {
 					const subjectArrayLength = subjectArray.length;
-					item.icon = _.get(this.iconMap, item.subject[subjectArrayLength - 1]) || '';
+					item.icon = _.get(this.iconMap, item.subject[subjectArrayLength - 1]) || 'icon-404';
 				} else {
-					item.icon = '';
+					item.icon = 'icon-404';
 				}
 				return item;
 			});

@@ -2,8 +2,8 @@
   <nuxt-link :to="`/article/${md.mid}`">
     <v-hover>
       <v-card slot-scope="{ hover }" :class="`ma-3 elevation-${hover ? 12 : 2}`">
-        <v-layout>
-					<v-flex xs4 class="text-lg-center" v-if="md.icon!=''">
+        <v-layout wrap row>
+					<v-flex xs12 md4 class="text-lg-center pa-2" v-if="md.icon!=''">
 						<svg class="icon" aria-hidden="true">
 							<use :xlink:href="`#${md.icon}`"></use>
 						</svg>
@@ -13,7 +13,7 @@
 							<div>
 								<h3 class="headline mb-0">{{md.title}}</h3>
 								<p>更新于：{{ fromNow(md.updateTime)}}</p>
-								<p>创建于：{{ formatTime(md.createTime)}}</p>
+								<p class="">创建于：{{ formatTime(md.createTime)}}</p>
 							</div>
 						</v-card-title>
 					</v-flex>
