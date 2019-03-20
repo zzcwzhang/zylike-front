@@ -59,7 +59,10 @@ export default {
 				const subjectArray = _.get(item, 'subject');
 				if(_.isArray(subjectArray)&&subjectArray.length>0) {
 					const subjectArrayLength = subjectArray.length;
-					item.icon = _.get(this.iconMap, item.subject[subjectArrayLength - 1]) || 'icon-404';
+
+					const getIcon = _.get(this.iconMap, item.subject[subjectArrayLength - 1])
+					console.log(getIcon);
+					item.icon = getIcon || 'icon-404';
 				} else {
 					item.icon = 'icon-404';
 				}
