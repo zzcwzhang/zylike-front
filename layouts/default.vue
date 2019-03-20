@@ -83,11 +83,16 @@
     </v-content>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
-        <v-list-tile @click.native="right = !right">
+				<v-list-tile>
+						<v-list-tile-title>调试工具</v-list-tile-title>
+				</v-list-tile>
+        <v-list-tile v-for="(item, i) in itemsRight" :key="i"  router exact>
           <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
+            <v-icon light>code</v-icon>
           </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
+					<a :href="`http://${item.title}`" target="_blank">
+						<v-list-tile-title>{{item.title}}</v-list-tile-title>
+					</a>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -151,6 +156,17 @@
             to: '/team'
           }
         ],
+				itemsRight: [
+					{
+						title: 'localhost:3000',
+					},
+					{
+						title: 'localhost:8082',
+					},
+					{
+						title: 'localhost:8083',
+					}
+				],
         miniVariant: false,
         right: true,
         rightDrawer: false,
