@@ -42,7 +42,8 @@ module.exports = {
 			}
 		],
 		script: [{
-			src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61'
+			src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61',
+			src: 'https://manage.zylike.com/api/cloudserver/iconfont/url',
 		}, ],
 		link: [{
 				rel: 'icon',

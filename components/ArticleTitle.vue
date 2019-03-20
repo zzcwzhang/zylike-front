@@ -2,13 +2,22 @@
   <nuxt-link :to="`/article/${md.mid}`">
     <v-hover>
       <v-card slot-scope="{ hover }" :class="`ma-3 elevation-${hover ? 12 : 2}`">
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">{{md.title}}</h3>
-            <p>更新于：{{ fromNow(md.updateTime)}}</p>
-            <p>创建于：{{ formatTime(md.createTime)}}</p>
-          </div>
-        </v-card-title>
+        <v-layout>
+					<v-flex xs4 class="text-lg-center" v-if="md.icon!=''">
+						<svg class="icon" aria-hidden="true">
+							<use :xlink:href="`#${md.icon}`"></use>
+						</svg>
+					</v-flex>
+					<v-flex xs8>
+						<v-card-title primary-title>
+							<div>
+								<h3 class="headline mb-0">{{md.title}}</h3>
+								<p>更新于：{{ fromNow(md.updateTime)}}</p>
+								<p>创建于：{{ formatTime(md.createTime)}}</p>
+							</div>
+						</v-card-title>
+					</v-flex>
+        </v-layout>
       </v-card>
     </v-hover>
   </nuxt-link>
@@ -32,7 +41,15 @@
 </script>
 
 <style scoped>
-a{
-	text-decoration: none;
-}
+  .icon {
+    width: 90%;
+    height: auto;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
 </style>
