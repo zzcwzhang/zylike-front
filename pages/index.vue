@@ -5,7 +5,8 @@
 				<v-flex
 					v-for="md in withIcon"
 					:key="md.mid"
-					xs6 sm4 md4 lg3>
+					class="reveal-top"
+					xs12 sm6 md6 lg4>
 					<article-title :md="md"></article-title>
 				</v-flex>
 			</v-layout>
@@ -51,6 +52,23 @@ export default {
 		/* console.log({ subjects, articles }); */
 		const iconMap = getDict(subjects);
 		return { articles, iconMap };
+	},
+	mounted() {
+		if(process.client) {
+			const scrollReveal = require('scrollreveal').default;
+			console.log(scrollReveal)
+			scrollReveal().reveal('.reveal-top', {
+				origin: 'bottom',
+				reset: false,
+				mobile: true,
+				distance: '150%',
+				opacity: 0,
+				rotate: {
+					x:20,
+					z:20,
+				}
+			});
+		}
 	},
 	computed: {
 		withIcon() {
