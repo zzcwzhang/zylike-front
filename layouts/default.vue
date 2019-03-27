@@ -132,17 +132,17 @@
         fixed: false,
         items: [{
             icon: 'apps',
-            title: 'Welcome',
+            title: '首页',
             to: '/'
           },
           {
             icon: 'reorder',
-            title: 'Article',
+            title: '归档',
             to: '/article'
           },
           {
             icon: 'accessibility',
-            title: 'AboutMe',
+            title: '关于我',
             to: '/about'
           },
           /* { */
@@ -152,7 +152,7 @@
           /* }, */
           {
             icon: 'people',
-            title: 'Team',
+            title: '昔日团队',
             to: '/team'
           }
         ],

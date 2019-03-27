@@ -5,7 +5,7 @@
 				<v-flex
 					v-for="md in withIcon"
 					:key="md.mid"
-					xs12 sm6 md6 lg4>
+					xs6 sm4 md4 lg3>
 					<article-title :md="md"></article-title>
 				</v-flex>
 			</v-layout>
