@@ -1,59 +1,77 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6 lg4 xl4 d-flex>
-      <img :src="icon" alt="">
-    </v-flex>
-    <v-flex xs12 sm8 md6 lg4>
-      <v-card>
-        <v-card-title class="headline">欢迎来到我的小站</v-card-title>
-        <v-card-text>
-          <p>新版前端正在建设中，因为前期考虑不周，导致旧版无法实现一些功，包括SEO、热力追踪、手机端适配等，所以不得不重构网站，敬请期待！</p>
-          <p>本站使用的技术在YouTube上 <a href="https://www.youtube.com/watch?v=Dc_5BpIB4X4&index=1&list=PL55RiY5tL51pk1RvaQOxI6sJ-yZzExzJn" target="_blank">这里</a>学得，有兴趣的朋友可以去看源视频教程</p>
-          <p>旧版连接(最好不要用手机浏览): <a href="http:manage.zylike.com">http//:manage.zylike.com</a></p>
-				</v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+	<div>
+		<v-container class="my-5">
+			<v-layout row wrap>
+				<v-flex
+					v-for="md in withIcon"
+					:key="md.mid"
+					xs12 sm6 md6 lg4>
+					<article-title :md="md"></article-title>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</div>
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
-  import zyicon from '~/assets/image/zylikeIcon.png'
-  import axios from 'axios'
-  import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import axios from 'axios';
+import ArticleTitle from '@/components/ArticleTitle';
+import _ from 'lodash';
 
-  export default {
-    /* head() { */
-    /*   return { */
-    /*     title: 'zylike个人小站', */
-    /*     meta: [{ */
-    /*       hid: 'description', */
-    /*       name: 'description', */
-    /*       content: '这是一个充满乐趣，刺激，潮流的技术网站' */
-    /*     }] */
-    /*   } */
-    /* }, */
-    data() {
-      return {
-        icon: zyicon,
-        posts: [{
-            title: 'A new Beginning',
-            previewText: 'This will be awesome, dont\'t miss it!',
-            thumbnailUrl: '',
-            id: 'a-new-beginning',
-          },
-          {
-            title: 'A Second Beginning',
-            previewText: 'This will be awesome, dont\'t miss it!',
-            thumbnailUrl: '',
-            id: 'a-second-beginning',
-          },
-        ]
-      }
-    },
-    components: {
-      Logo,
-      VuetifyLogo
-    }
-  }
+
+function getDict(in_subjects) {
+	const tree = _.cloneDeep(in_subjects);
+	const dict = {};
+	const walkTree = (t_node) => {
+		const { label = '', value = '', children = [] } = t_node;
+		if(label!=''&&value!='') {
+			dict[label] = value;
+		}
+		if ( _.isArray(children) && children.length > 0 ) {
+			_.forEach(children, (item) => {
+				walkTree(item);
+			})
+		} 
+	}
+	_.forEach(tree, (item) => {
+		walkTree(item);
+	})
+	return dict;
+}
+
+export default {
+	name: 'article',
+	components: {
+		ArticleTitle,
+	},
+	async asyncData() {
+		const articles = await axios.get('https://manage.zylike.com/api/article/list').then(res => res.data).then( resdata => resdata.data);
+;
+		const subjects = await axios.get('https://manage.zylike.com/api/subject/all').then(res => res.data).then( resdata => resdata.data);
+		/* console.log({ subjects, articles }); */
+		const iconMap = getDict(subjects);
+		return { articles, iconMap };
+	},
+	computed: {
+		withIcon() {
+			const all = _.map(this.articles, (item) => {
+				const subjectArray = _.get(item, 'subject');
+				if(_.isArray(subjectArray)&&subjectArray.length>0) {
+					const subjectArrayLength = subjectArray.length;
+
+					const getIcon = _.get(this.iconMap, item.subject[subjectArrayLength - 1])
+					console.log(getIcon);
+					item.icon = getIcon || 'icon-404';
+				} else {
+					item.icon = 'icon-404';
+				}
+				return item;
+			});
+			return all;
+		},
+	},
+};
 </script>
+
+<style scoped>
+</style>

@@ -1,6 +1,9 @@
 <template>
   <section id="about-page">
 		<v-container>
+			<v-flex xs12 sm8 md6 lg4 xl4 d-flex>
+				<img :src="icon" alt="">
+			</v-flex>
 			<h1>自我介绍</h1>
 			<p class="ma-3">各种测试中</p>
 			<h1>过往项目</h1>
@@ -49,9 +52,11 @@
 </template>
 
 <script>
+  import zyicon from '~/assets/image/zylikeIcon.png'
   export default {
 		data() {
 			return {
+        icon: zyicon,
 				projects: [
 					{ title: 'Design a new website', person: 'The Net Ninja', due: '126 Jan 2019', status:'ongoing'},
 					{ title: 'website server', person: 'me', due: '126 Jan 2019', status:'overdue'},
