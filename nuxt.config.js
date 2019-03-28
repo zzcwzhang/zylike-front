@@ -41,10 +41,10 @@ module.exports = {
 				content: "技术，分享，前端，后端，运维，服务器，人生，阅读，技术英语, 设计"
 			}
 		],
-		script: [{
-			src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61',
-			src: 'https://manage.zylike.com/api/cloudserver/iconfont/url',
-		}, ],
+		script: [
+			{ src: 'https://manage.zylike.com/api/cloudserver/iconfont/url' },
+			{ src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61' },
+		],
 		link: [{
 				rel: 'icon',
 				type: 'image/x-icon',

@@ -69,7 +69,6 @@
     async asyncData() {
       const articles = await axios.get('https://manage.zylike.com/api/article/list').then(res => res.data).then(resdata => resdata.data);;
       const subjects = await axios.get('https://manage.zylike.com/api/subject/all').then(res => res.data).then(resdata => resdata.data);
-      /* console.log({ subjects, articles }); */
       const iconMap = getDict(subjects);
       return {
         articles,
@@ -92,7 +91,6 @@
             const subjectArrayLength = subjectArray.length;
 
             const getIcon = _.get(this.iconMap, item.subject[subjectArrayLength - 1])
-            console.log(getIcon);
             item.icon = getIcon || 'icon-404';
           } else {
             item.icon = 'icon-404';
