@@ -26,9 +26,9 @@
     </v-navigation-drawer>
     <v-toolbar :clipped-left="clipped" fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant"> -->
-      <!--   <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon> -->
-      <!-- </v-btn> -->
+			<!-- <v-btn icon @click.stop="console.log('ok')" v-if="inArticle"> -->
+			<!--   <v-icon>{{ `chevron_left` }}</v-icon> -->
+			<!-- </v-btn> -->
       <!-- <v-btn icon @click.stop="clipped = !clipped"> -->
       <!--   <v-icon>web</v-icon> -->
       <!-- </v-btn> -->
@@ -60,7 +60,7 @@
       <!--   </v-list> -->
       <!-- </v-menu> -->
 
-      <v-menu offset-y>
+      <v-menu offset-y v-if="showMenu">
         <v-btn flat slot="activator" color="grey">
           <v-icon left>expand_more</v-icon>
           <span>Menu</span>
@@ -84,13 +84,13 @@
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
 				<v-list-tile>
-						<v-list-tile-title>调试工具</v-list-tile-title>
+						<v-list-tile-title>工具箱</v-list-tile-title>
 				</v-list-tile>
         <v-list-tile v-for="(item, i) in itemsRight" :key="i"  router exact>
           <v-list-tile-action>
             <v-icon light>code</v-icon>
           </v-list-tile-action>
-					<a :href="`http://${item.title}`" target="_blank">
+					<a :href="item.url" target="_blank">
 						<v-list-tile-title>{{item.title}}</v-list-tile-title>
 					</a>
         </v-list-tile>
@@ -115,7 +115,6 @@
     components: {
       Popup,
     },
-
 		computed: {
 			sysAlert() {
 				return this.$store.state.sys_alert;
@@ -123,8 +122,13 @@
 			sysAlertContent() {
 				return this.$store.state.sys_alert_content;
 			},
+			showMenu() {
+				return this.$route.name == 'index';
+			},
+			inArticle() {
+				return this.$route.name == 'article-mid';
+			},
 		},
-
     data() {
       return {
         clipped: false,
@@ -159,13 +163,25 @@
 				itemsRight: [
 					{
 						title: 'localhost:3000',
-					},
-					{
-						title: 'localhost:8082',
+						url:'http://localhost:3000',
 					},
 					{
 						title: 'localhost:8083',
-					}
+						url:'http://localhost:8083'
+					},
+					{
+						title: 'CMS',
+						url: 'https://manage.zylike.com',
+					},
+					{
+						title: '百度一下',
+						url: 'https://www.baidu.com',
+					},
+					{
+						title: '英语学习',
+						url: 'https://www.quora.com/',
+					},
+
 				],
         miniVariant: false,
         right: true,
