@@ -9,7 +9,7 @@
       </v-flex>
     </v-layout>
 		<v-layout column :class="`${isMobile ? 'mobile' : 'pc'}-follow`" style="z-index: 2000">
-      <NuxtLink to="/article">
+      <NuxtLink :to="lastRoute">
         <v-btn :small="isMobile" fab>
           <v-icon>arrow_back</v-icon>
         </v-btn>
@@ -51,6 +51,9 @@
 				} else {
 					return false;
 				}
+			},
+			lastRoute() {
+				return this.$store.state.last_route;
 			},
     },
     head() {

@@ -188,7 +188,12 @@
         rightDrawer: false,
         title: 'ZYLIKE.COM'
       }
-    }
+    },
+		watch: {
+			'$route.path': function(newValue, oldValue){
+				this.$store.commit('__SYS_SET_ROUTE_RECORD', oldValue);
+			}
+		},
   }
 </script>
 <style>

@@ -4,6 +4,7 @@ export const state = () => ({
 		info: '',
 		type: 'success',
 	},
+	last_route: '',
 })
 
 export const mutations = {
@@ -12,6 +13,9 @@ export const mutations = {
 	},
 	__SYS_ALERT_COMMENT(state, content) {
 		state.sys_alert_content = content;
+	},
+	__SYS_SET_ROUTE_RECORD(state, route) {
+		state.last_route = route;
 	},
 }
 
