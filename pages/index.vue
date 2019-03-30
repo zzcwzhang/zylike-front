@@ -54,18 +54,16 @@ export default {
 	},
 	mounted() {
 		if(process.client) {
-			const scrollReveal = require('scrollreveal').default;
-			scrollReveal().reveal('.reveal-top', {
-				origin: 'bottom',
-				reset: false,
-				mobile: true,
-				distance: '150%',
-				opacity: 0,
-				rotate: {
-					x:20,
-					z:20,
+			const slist = this.$store.state.scroll_record;
+			const tag = _.find(slist, item => item.route == this.$route.path); 
+			if(tag) {
+				const { position = 0 } = tag;
+				if(position > 0) {
+					setTimeout(() => {
+						document.documentElement.scrollTop = position;
+					}, 500);
 				}
-			});
+			}
 		}
 	},
 	computed: {

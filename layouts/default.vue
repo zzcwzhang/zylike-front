@@ -115,6 +115,22 @@
     components: {
       Popup,
     },
+		mounted() {
+			if(process.client) {
+				const scrollReveal = require('scrollreveal').default;
+				scrollReveal().reveal('.reveal-top', {
+					origin: 'bottom',
+					reset: false,
+					mobile: true,
+					distance: '150%',
+					opacity: 0,
+					rotate: {
+						x:20,
+						z:20,
+					}
+				});
+			}
+		},
 		computed: {
 			sysAlert() {
 				return this.$store.state.sys_alert;
@@ -191,7 +207,18 @@
     },
 		watch: {
 			'$route.path': function(newValue, oldValue){
+
+				//记录上一页
 				this.$store.commit('__SYS_SET_ROUTE_RECORD', oldValue);
+
+				// 记录来源页的scroll记录
+				if(oldValue && document) {
+					this.$store.commit('__SYS_SET_SCROLL_RECORD', {
+						route: oldValue,
+						position: document.documentElement.scrollTop,
+					});
+				}
+
 			}
 		},
   }

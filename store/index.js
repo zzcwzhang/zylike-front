@@ -5,6 +5,9 @@ export const state = () => ({
 		type: 'success',
 	},
 	last_route: '',
+
+	// 用来记录可以滚动页的转跳前位置
+	scroll_record: [],
 })
 
 export const mutations = {
@@ -16,6 +19,19 @@ export const mutations = {
 	},
 	__SYS_SET_ROUTE_RECORD(state, route) {
 		state.last_route = route;
+	},
+	__SYS_SET_SCROLL_RECORD(state, { route, position }) {
+		const tag = _.find(state.scroll_record, item => {
+			return item.route == route;
+		});
+		if(tag) {
+			tag.position = position;
+		} else {
+			state.scroll_record.push({
+				route,
+				position,
+			});
+		}
 	},
 }
 
