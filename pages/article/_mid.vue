@@ -8,15 +8,17 @@
         </div>
       </v-flex>
     </v-layout>
-    <v-layout column class="follow" style="z-index: 2000">
-      <v-btn small fab @click="backToTop">
-        <v-icon>vertical_align_top</v-icon>
-      </v-btn>
+		<v-layout column :class="`${isMobile ? 'mobile' : 'pc'}-follow`" style="z-index: 2000">
       <NuxtLink to="/article">
-        <v-btn small fab>
-          <v-icon>reply</v-icon>
+        <v-btn :small="isMobile" fab>
+          <v-icon>arrow_back</v-icon>
         </v-btn>
       </NuxtLink>
+      <v-btn fab :small="isMobile" @click="backToTop">
+        <v-icon>vertical_align_top</v-icon>
+      </v-btn>
+    </v-layout>
+    <v-layout>
     </v-layout>
   </v-container>
 </template>
@@ -35,13 +37,21 @@
     created() {},
     data() {
       return {
-				/* step: 50, */
-			};
+        /* step: 50, */
+      };
     },
     computed: {
       contentComponent() {
         return process.browser ? mavonEditor : serverContentShow;
-      }
+      },
+			isMobile() {
+				const { name:breakpoint } = this.$vuetify.breakpoint;
+				if ( breakpoint == 'xs' || breakpoint == 'sm') {
+					return true;
+				} else {
+					return false;
+				}
+			},
     },
     head() {
       return {
@@ -81,9 +91,9 @@
     },
     methods: {
       backToTop() {
-        if ( process.client ) {
-					document.documentElement.scrollTop = 0
-					return;
+        if (process.client) {
+          document.documentElement.scrollTop = 0
+          return;
         }
       }
     }
@@ -93,10 +103,16 @@
   .room {
     position: relative;
     z-index: 1;
-		padding-bottom: 30vh;
+    padding-bottom: 30vh;
   }
 
-  .follow {
+  .pc-follow {
+    position: fixed;
+    top: 80px;
+    right: 9px;
+  }
+
+  .mobile-follow {
     position: fixed;
     bottom: 30px;
     right: 9px;
@@ -104,5 +120,11 @@
 
   a {
     text-decoration: none;
+  }
+
+  .top-back {
+    position: fixed;
+    top: 10vh;
+    right: 60px;
   }
 </style>
