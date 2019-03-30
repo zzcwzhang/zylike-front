@@ -11,9 +11,9 @@
 					<v-flex xs8>
 						<v-card-title primary-title>
 							<div>
-								<h3 class="headline mb-0">{{md.title}}</h3>
-								<p>更新于：{{ fromNow(md.updateTime)}}</p>
-								<p class="">创建于：{{ formatTime(md.createTime)}}</p>
+								<p class="title mb-0">{{md.title}}</p>
+								<p class="caption">更新于：{{ fromNow(md.updateTime)}}</p>
+								<p class="caption">创建于：{{ formatTime(md.createTime)}}</p>
 							</div>
 						</v-card-title>
 					</v-flex>
