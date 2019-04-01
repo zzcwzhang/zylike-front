@@ -31,7 +31,7 @@
       <v-spacer />
 			<!-- 文章查询 -->
 			<v-toolbar-items >
-				<v-text-field label="查询（标题，标签）" v-model="searchText" append append-icon="search" hide-details single-line></v-text-field>
+				<v-text-field label="查询（标题，标签）" v-model="searchText" append append-icon="search" hide-details single-line v-if="showMenu"></v-text-field>
 			</v-toolbar-items>
 
 			<!-- 排序菜单	 -->
