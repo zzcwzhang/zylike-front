@@ -116,6 +116,7 @@
       Popup,
     },
 		mounted() {
+			// 设置scrollreveal插件,添加滚动效果
 			if(process.client) {
 				const scrollReveal = require('scrollreveal').default;
 				scrollReveal().reveal('.reveal-top', {
