@@ -24,49 +24,24 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+		<!-- 顶部菜单 -->
     <v-toolbar :clipped-left="clipped" fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
-			<!-- <v-btn icon @click.stop="console.log('ok')" v-if="inArticle"> -->
-			<!--   <v-icon>{{ `chevron_left` }}</v-icon> -->
-			<!-- </v-btn> -->
-      <!-- <v-btn icon @click.stop="clipped = !clipped"> -->
-      <!--   <v-icon>web</v-icon> -->
-      <!-- </v-btn> -->
-      <!-- <v-btn icon @click.stop="fixed = !fixed"> -->
-      <!--   <v-icon>remove</v-icon> -->
-      <!-- </v-btn> -->
-      <v-toolbar-title v-text="title" />
-
+      <v-toolbar-title class="hidden-md-and-down" v-text="title" />
       <v-spacer />
+			<!-- 文章查询 -->
+			<v-toolbar-items >
+				<v-text-field label="查询（标题，标签）" v-model="searchText" append append-icon="search" hide-details single-line></v-text-field>
+			</v-toolbar-items>
 
-      <!-- <v-menu offset-y> -->
-      <!--   <template v-slot:activator="{ on }"> -->
-      <!--     <v-btn -->
-      <!--       color="primary" -->
-      <!--       dark -->
-      <!--       v-on="on" -->
-      <!--       > -->
-      <!--       Dropdown -->
-      <!--     </v-btn> -->
-      <!--   </template> -->
-      <!--   <v-list> -->
-      <!--     <v-list-tile -->
-      <!--       v-for="(item, index) in items" -->
-      <!--       :key="index" -->
-      <!--       @click="" -->
-      <!--       > -->
-      <!--       <v-list-tile-title>{{ item.title }}</v-list-tile-title> -->
-      <!--     </v-list-tile> -->
-      <!--   </v-list> -->
-      <!-- </v-menu> -->
-
+			<!-- 排序菜单	 -->
       <v-menu offset-y v-if="showMenu">
         <v-btn flat slot="activator" color="grey">
           <v-icon left>expand_more</v-icon>
-          <span>Menu</span>
+          <span>排列</span>
         </v-btn>
         <v-list>
-          <v-list-tile v-for="link of items" :key="link.title" router :to="link.to">
+          <v-list-tile v-for="link of sortMenu" :key="link.title">
             <v-list-tile-title>{{ link.title }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -151,6 +126,21 @@
         clipped: false,
         drawer: false,
         fixed: false,
+				searchText: '',
+				sortMenu: [
+					{
+						title: '更新时间',
+						value: 'updateTime',
+					},
+					{
+						title: '创建时间',
+						value: 'createTime',
+					},
+					{
+						title: '所属主题',
+						value: 'theme',
+					}
+				],
         items: [{
             icon: 'apps',
             title: '首页',
@@ -166,11 +156,6 @@
             title: '关于我',
             to: '/about'
           },
-          /* { */
-          /*   icon: 'dashboard', */
-          /*   title: 'Recipes', */
-          /*   to: '/recipes' */
-          /* }, */
           {
             icon: 'people',
             title: '昔日团队',
