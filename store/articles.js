@@ -44,9 +44,21 @@ function getDict(in_subjects) {
 }
 
 export const getters = {
-	getArticlesWithIcon(state) {
+	// 当查询栏不为空时，过滤列表
+	getSearchedList(state) {
+		const { searchText } = state;
+		if(searchText != '') {
+			return _.filter(state.list, (item) => {
+				return _.includes(item.title, searchText) || _.includes(item.subject, searchText);
+			});
+		} else {
+			return state.list;
+		}
+	},
+	getArticlesWithIcon(state, getters) {
+		const list = getters.getSearchedList;
 		const iconMap = getDict(state.subjects);
-		const all = _.map(state.list, (item) => {
+		const all = _.map(list, (item) => {
 			const subjectArray = _.get(item, 'subject');
 			if (_.isArray(subjectArray) && subjectArray.length > 0) {
 				const subjectArrayLength = subjectArray.length;
