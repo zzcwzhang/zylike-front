@@ -94,7 +94,7 @@ module.exports = {
 		'@nuxtjs/axios',
 	],
 	axios: {
-		proxy: true,
+		proxy: process.env.NODE_ENV === 'development',
 	},
 	proxy: {
 		'/api': {
