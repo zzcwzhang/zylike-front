@@ -92,6 +92,8 @@
     },
 		mounted() {
 			// 设置scrollreveal插件,添加滚动效果
+			const test = this.$store.state.articles.list;
+			console.log({ test })
 			if(process.client) {
 				const scrollReveal = require('scrollreveal').default;
 				scrollReveal().reveal('.reveal-top', {
@@ -120,13 +122,22 @@
 			inArticle() {
 				return this.$route.name == 'article-mid';
 			},
+			dataWithSearch() {
+			},
+			searchText: {
+				get(){
+					return this.$store.state.articles.searchText;
+				},
+				set(val) {
+					this.$store.commit('articles/setSearchText', val);
+				}
+			},
 		},
     data() {
       return {
         clipped: false,
         drawer: false,
         fixed: false,
-				searchText: '',
 				sortMenu: [
 					{
 						title: '更新时间',
