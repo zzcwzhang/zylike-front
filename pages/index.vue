@@ -19,27 +19,6 @@ import axios from 'axios';
 import ArticleTitle from '@/components/ArticleTitle';
 import _ from 'lodash';
 
-
-function getDict(in_subjects) {
-	const tree = _.cloneDeep(in_subjects);
-	const dict = {};
-	const walkTree = (t_node) => {
-		const { label = '', value = '', children = [] } = t_node;
-		if(label!=''&&value!='') {
-			dict[label] = value;
-		}
-		if ( _.isArray(children) && children.length > 0 ) {
-			_.forEach(children, (item) => {
-				walkTree(item);
-			})
-		} 
-	}
-	_.forEach(tree, (item) => {
-		walkTree(item);
-	})
-	return dict;
-}
-
 export default {
 	name: 'article',
 	components: {
