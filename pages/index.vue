@@ -45,42 +45,33 @@ export default {
 	components: {
 		ArticleTitle,
 	},
-	async asyncData() {
-		const articles = await axios.get('https://manage.zylike.com/api/article/list').then(res => res.data).then( resdata => resdata.data);
-;
-		const subjects = await axios.get('https://manage.zylike.com/api/subject/all').then(res => res.data).then( resdata => resdata.data);
-		const iconMap = getDict(subjects);
-		return { articles, iconMap };
-	},
+	// 留作参考
+	// async asyncData({ $axios }) {
+//     const articles = await $axios.get('/api/article/list').then(res => res.data).then( resdata => resdata.data);
+// ;
+//     const subjects = await $axios.get('/api/subject/all').then(res => res.data).then( resdata => resdata.data);
+//     const iconMap = getDict(subjects);
+//     return { articles, iconMap };
+	// },
 	mounted() {
+		// 读取上次滚动位置
 		if(process.client) {
 			const slist = this.$store.state.scroll_record;
 			const tag = _.find(slist, item => item.route == this.$route.path); 
 			if(tag) {
 				const { position = 0 } = tag;
 				if(position > 0) {
+					// 必须有延迟
 					setTimeout(() => {
 						document.documentElement.scrollTop = position;
-					}, 500);
+					}, 300);
 				}
 			}
 		}
 	},
 	computed: {
 		withIcon() {
-			const all = _.map(this.articles, (item) => {
-				const subjectArray = _.get(item, 'subject');
-				if(_.isArray(subjectArray)&&subjectArray.length>0) {
-					const subjectArrayLength = subjectArray.length;
-
-					const getIcon = _.get(this.iconMap, item.subject[subjectArrayLength - 1])
-					item.icon = getIcon || 'icon-404';
-				} else {
-					item.icon = 'icon-404';
-				}
-				return item;
-			});
-			return all;
+			return this.$store.getters['articles/getArticlesWithIcon'];
 		},
 	},
 };

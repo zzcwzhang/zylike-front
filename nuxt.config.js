@@ -82,13 +82,29 @@ module.exports = {
 		'@/plugins/vuetify',
 		'@/plugins/sentry',
 		'@/plugins/baidu',
+		'@/plugins/fetch',
 		/* { src: '@/plugins/vue-mavon-editor', ssr: true}, // 全局注册,ssr:false保证服务器端不会渲染，从而避免document或window找不到的bug */
 	],
 
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: [],
+	modules: [
+		'@nuxtjs/proxy',
+		'@nuxtjs/axios',
+	],
+	axios: {
+		proxy: true,
+	},
+	proxy: {
+		'/api': {
+			target: 'https://manage.zylike.com',
+			pathRewrite: {
+				'^/api': '/api',
+			}
+		}
+	},
+
 
 	/*
 	 ** Build configuration
