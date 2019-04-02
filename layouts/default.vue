@@ -162,12 +162,12 @@
         drawer: false,
         fixed: false,
         sortMenu: [{
-            title: '更新时间',
-            value: 'updateTime',
+            title: '平铺',
+            value: 'tile',
           },
           {
-            title: '创建时间',
-            value: 'createTime',
+            title: '分层',
+            value: 'layer',
           },
           // {
           //   title: '所属主题',

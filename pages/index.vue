@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-container class="my-5">
-			<v-layout row wrap>
+			<v-layout row wrap v-if="order == 'tile'">
 				<v-flex
 					v-for="md in withIcon"
 					:key="md.mid"
@@ -9,6 +9,9 @@
 					xs12 sm6 md6 lg4>
 					<article-title :md="md"></article-title>
 				</v-flex>
+			</v-layout>
+			<v-layout row wrap v-if="order == 'layer'">
+				<v-treeview :items="layerData" item-text="label"></v-treeview>
 			</v-layout>
 		</v-container>
 	</div>
@@ -51,6 +54,12 @@ export default {
 	computed: {
 		withIcon() {
 			return this.$store.getters['articles/getArticlesWithIcon'];
+		},
+		order() {
+			return this.$store.state.articles.order;
+		},
+		layerData() {
+			return this.$store.getters['articles/getArticlesByTheme'];
 		},
 	},
 };

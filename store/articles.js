@@ -8,7 +8,7 @@ export const state = () => ({
 	/*查询索引*/
 	searchText: '',
 	/*排列方式*/
-	order: 'updateTime',
+	order: 'tile',
 
 })
 
