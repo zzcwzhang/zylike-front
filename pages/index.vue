@@ -11,7 +11,15 @@
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap v-if="order == 'layer'">
-				<v-treeview :items="layerData" item-text="label"></v-treeview>
+				<v-treeview :items="layerData" item-text="label">
+					<template v-slot:prepend="{ item }">
+						<v-avatar size="16" v-if="item.icon!=''">
+							<svg class="icon" aria-hidden="true">
+								<use :xlink:href="`#${item.value}`"></use>
+							</svg>
+          </v-avatar>
+        </template>
+				</v-treeview>
 			</v-layout>
 		</v-container>
 	</div>
