@@ -40,7 +40,10 @@
           <span>排列</span>
         </v-btn>
         <v-list>
-          <v-list-tile v-for="link of sortMenu" :key="link.title">
+					<v-list-tile v-for="link of sortMenu" :key="link.title" @click="setArticlesOrder(link.value)">
+						<v-list-tile-action>
+							<v-icon v-if="link.value == articlesOrder">done</v-icon>
+						</v-list-tile-action>
             <v-list-tile-title>{{ link.title }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -121,6 +124,10 @@
 				this.$store.commit('articles/setList', articles);
 				this.$store.commit('articles/setSubjects', subjects);
 			},
+
+			setArticlesOrder(in_order) {
+				this.$store.commit('articles/setOrder', in_order);
+			},
 		},
     computed: {
       sysAlert() {
@@ -144,6 +151,9 @@
           this.$store.commit('articles/setSearchText', val);
         }
       },
+			articlesOrder() {
+				return this.$store.state.articles.order;
+			}
     },
     data() {
       return {
@@ -158,10 +168,10 @@
             title: '创建时间',
             value: 'createTime',
           },
-          {
-            title: '所属主题',
-            value: 'theme',
-          }
+          // {
+          //   title: '所属主题',
+          //   value: 'theme',
+          // }
         ],
         items: [{
             icon: 'apps',

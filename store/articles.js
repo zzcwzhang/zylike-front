@@ -1,9 +1,14 @@
 import _ from 'lodash';
 
 export const state = () => ({
+	/*文章列表*/
 	list: [],
+	/*主题列表*/
 	subjects: [],
+	/*查询索引*/
 	searchText: '',
+	/*排列方式*/
+	order: 'updateTime',
 
 })
 
@@ -21,21 +26,27 @@ export const mutations = {
 		state.searchText = in_tagOrName;
 	},
 
+	setOrder(state, in_order) {
+		state.order = in_order;
+	}
+
 }
 
 function getDict(in_subjects) {
 	const tree = _.cloneDeep(in_subjects);
 	const dict = {};
 	const walkTree = (t_node) => {
-		const { label = '', value = '', children = [] } = t_node;
-		if(label!=''&&value!='') {
+		const {
+			label = '', value = '', children = []
+		} = t_node;
+		if (label != '' && value != '') {
 			dict[label] = value;
 		}
-		if ( _.isArray(children) && children.length > 0 ) {
+		if (_.isArray(children) && children.length > 0) {
 			_.forEach(children, (item) => {
 				walkTree(item);
 			})
-		} 
+		}
 	}
 	_.forEach(tree, (item) => {
 		walkTree(item);
@@ -46,8 +57,10 @@ function getDict(in_subjects) {
 export const getters = {
 	// 当查询栏不为空时，过滤列表
 	getSearchedList(state) {
-		const { searchText } = state;
-		if(searchText != '') {
+		const {
+			searchText
+		} = state;
+		if (searchText != '') {
 			return _.filter(state.list, (item) => {
 				return _.includes(item.title, searchText) || _.includes(item.subject, searchText);
 			});
@@ -71,5 +84,5 @@ export const getters = {
 			return item;
 		});
 		return all;
-	}
+	},
 }
