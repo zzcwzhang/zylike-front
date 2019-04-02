@@ -5,6 +5,31 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 const axios = require('axios');
 
+const axiosConfig = process.env.NODE_ENV == 'development' ?
+	{
+	axios: {
+		proxy: true,
+    credentials: true,
+    debug: true,
+    retry: false,
+	},
+	proxy: {
+		'/api': {
+			target: 'https://manage.zylike.com',
+			pathRewrite: {
+				'^/api': '/api',
+			}
+		}
+	},
+
+} : {
+  axios: {
+    prefix:  'https://manage.zylike.com',
+    credentials: true,
+    retry: true
+  },
+};
+
 module.exports = {
 	mode: 'universal',
 	env : {
@@ -30,7 +55,7 @@ module.exports = {
 	 ** Headers of the page
 	 */
 	head: {
-		title: "欢迎来到zylike技术博客",
+		title: process.env.NODE_ENV == 'development' ?  'dev' : "欢迎来到zylike技术博客",
 		meta: [{
 				charset: 'utf-8'
 			},
@@ -96,21 +121,8 @@ module.exports = {
 		'@nuxtjs/proxy',
 		'@nuxtjs/axios',
 	],
-  axios: {
-    prefix: process.env.NODE_ENV !== 'development' ? 'https://manage.zylike.com': '',
-		proxy: process.env.NODE_ENV === 'development',
-    credentials: true,
-    debug: process.env.NODE_ENV != 'development' ,
-    retry: true
-  },
-	proxy: {
-		'/api': {
-			target: 'https://manage.zylike.com',
-			pathRewrite: {
-				'^/api': '/api',
-			}
-		}
-	},
+
+	...axiosConfig,
 
 
 	/*
