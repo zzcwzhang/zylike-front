@@ -111,7 +111,6 @@
     async mounted() {
 
 			const env =  process.env.NODE_ENV;
-			console.log({env});
 			await this.initialData();
 
 			// 设置scrollreveal插件,添加滚动效果

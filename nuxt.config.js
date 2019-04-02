@@ -24,7 +24,7 @@ const axiosConfig = process.env.NODE_ENV == 'development' ?
 
 } : {
   axios: {
-    prefix:  'https://manage.zylike.com',
+    baseURL:  'https://manage.zylike.com',
     credentials: true,
     retry: true
   },
