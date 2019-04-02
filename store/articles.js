@@ -150,11 +150,12 @@ function getByTheme(datas, ntree) {
 						if (!_.isArray(walk['children'])) {
 							walk['children'] = [];
 						}
-						// 把文章压入队列
+						// 调整对象结构
 						const article = {
 							label: md.title, 
 							mid: md.mid,
 						}
+						// 把文章压入队列
 						walk['children'].push(article);
 					}
 				})

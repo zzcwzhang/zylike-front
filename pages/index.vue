@@ -11,7 +11,20 @@
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap v-if="order == 'layer'">
-				<v-treeview :items="layerData" item-text="label">
+				<v-treeview
+					:items="layerData"
+					item-text="label"
+					activatable
+					v-model="selectItem"
+					open-on-click
+					item-key="label"
+					>
+					<template v-slot:label="{item}">
+						<nuxt-link v-if="item['mid']" :to="`/article/${item.mid}`">
+							<span>{{ item.label  }}</span>
+						</nuxt-link>
+						<span v-else>{{ item.label  }}</span>
+					</template>
 					<template v-slot:prepend="{ item }">
 						<v-avatar size="16" v-if="item.icon!=''">
 							<svg class="icon" aria-hidden="true">
@@ -34,6 +47,11 @@ export default {
 	name: 'article',
 	components: {
 		ArticleTitle,
+	},
+	data() {
+		return {
+			selectItem: [],
+		}
 	},
 	// 留作参考
 	// async asyncData({ $axios }) {
