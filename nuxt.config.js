@@ -7,6 +7,9 @@ const axios = require('axios');
 
 module.exports = {
 	mode: 'universal',
+	env : {
+		NODE_ENV: process.env.NODE_ENV,
+	},
 
 	// 动态路由
 	generate: {
