@@ -54,6 +54,37 @@ function getDict(in_subjects) {
 	return dict;
 }
 
+
+function getSubjectTreeObject(in_tree) { // 为了可以用对象方式快速检测路径
+	const stree = _.cloneDeep(in_tree);
+	const subObect = {};
+	const recursive = (fpath, root) => {
+		const father = _.get(subObect, fpath);
+		const hasChildren = root.hasOwnProperty('children') && _.isArray(root.children) && root.children.length > 0;
+		if (hasChildren) {
+			_.forEach(root.children, child => {
+				// 先把自己作为属性加入父节点
+				const {
+					label = '', children = []
+				} = child;
+				if (label != '') {
+					const cpath = `${fpath}.${label}`
+					_.set(subObect, cpath, {});
+					if (children.length > 0) {
+						recursive(cpath, child);
+					}
+				}
+			})
+		}
+	}
+	_.forEach(stree, item => {
+		const mainLabel = item.label;
+		subObect[mainLabel] = {};
+		recursive(mainLabel, item);
+	})
+	return subObect;
+}
+
 function getByTheme(datas, ntree) {
 	// 文章分层: 遍历所有文章，根据文章subject属性的队列长度，把它放入sortByLayer里的二维数组里
 	// 如果文章的队列长度为N,就把它放在subject[N]里
@@ -62,6 +93,7 @@ function getByTheme(datas, ntree) {
 	const sortByLayer = [
 		[]
 	]; // 分层二维数组
+	const subjectTreeObject = getSubjectTreeObject(ntree);
 	const countRecord = {}; // 统计记录
 	_.forEach(datas, (item) => {
 		if (item.hasOwnProperty('subject') && item.subject.length > 0) {
@@ -73,7 +105,7 @@ function getByTheme(datas, ntree) {
 			}
 			// 判断路径是否正确, 如果路径不正确则放到0层里
 			const mdSubPath = _.join(item.subject, '.');
-			const isCorrectPath = _.get(ntree, mdSubPath);
+			const isCorrectPath = _.get(subjectTreeObject, mdSubPath);
 			if (isCorrectPath) { // 当路径正确时
 				sortByLayer[subjectLength].push(item); // 该层的队列添加此文档为新元素
 
@@ -119,7 +151,11 @@ function getByTheme(datas, ntree) {
 							walk['children'] = [];
 						}
 						// 把文章压入队列
-						walk['children'].push(md);
+						const article = {
+							label: md.title, 
+							mid: md.mid,
+						}
+						walk['children'].push(article);
 					}
 				})
 			}
