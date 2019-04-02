@@ -94,7 +94,7 @@ module.exports = {
 		'@nuxtjs/axios',
 	],
   axios: {
-    prefix: process.env.NODE_ENV === 'development' ? 'https://manage.zylike.com': '',
+    prefix: process.env.NODE_ENV !== 'development' ? 'https://manage.zylike.com': '',
 		proxy: process.env.NODE_ENV === 'development',
     credentials: true,
     debug: process.env.NODE_ENV != 'development' ,
