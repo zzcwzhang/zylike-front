@@ -190,6 +190,11 @@
             to: '/about'
           },
           {
+            icon: 'code',
+            title: '源码',
+            to: '/inspire'
+          },
+          {
             icon: 'people',
             title: '昔日团队',
             to: '/team'
@@ -206,6 +211,10 @@
           {
             title: 'CMS',
             url: 'https://manage.zylike.com',
+          },
+          {
+            title: '在线编辑',
+            url: 'https://codesandbox.io/s/github/zzcwzhang/zylike-front',
           },
           {
             title: '百度一下',
