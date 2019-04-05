@@ -4,7 +4,7 @@
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
-            <img src="/avatar/zhangyuan.png" alt="">
+            <img src="http://oss.zylike.com/images/zhangyuan.png" alt="">
           </v-avatar>
         </v-flex>
         <p class="subheading mt-1">Zhang Yuan</p>
