@@ -5,7 +5,42 @@
 				<img :src="icon" alt="">
 			</v-flex>
 			<h1>自我介绍</h1>
-			<p class="ma-3">各种测试中</p>
+			<p class="ma-3">全栈开发者, 毕业于沈阳理工大学计算机科学与技术, 目前待业在家</p>
+			<h1>技术栈</h1>
+			<h3 class="ma-3"> 
+				主要技术：
+			</h3>
+			<p>
+			Vue: Element-UI、Vuetify、Nuxt
+			</p>
+			<p>
+			ThreeJs: shader
+			</p>
+			<p>
+			Electron: electron-vue
+			</p>
+			<p>
+			React: Next、Ant
+			</p>
+			后端语言：
+			NodeJs: Koa
+			<h3 class="ma-3">运维技术</h3>
+			<p> Docker </p>
+			<p> Nginx </p>
+			<p> Webpack、Gulp、pm2 </p>
+			<h3 class="ma-3"> 其他语言： </h3>
+			<p>
+			Python: PyQt5
+			网络爬虫:  selenium (一般使用python或node版)
+			Java: 写过controller层、游戏服务器开发
+			C++: 游戏客户端开发(cocos2dx)
+			</p>
+
+			<h3>
+				第三方服务：
+			</h3>
+			<p> 阿里云: ECS, OSS，视频直播，域名解析, 短信服务</p>
+			<p> 支付方案：支付宝、微信 </p>
 			<h1>过往项目</h1>
 			<v-layout row class="mb-3">
 				<v-tooltip top>
