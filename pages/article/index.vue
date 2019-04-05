@@ -32,6 +32,7 @@
 
 <script>
   import moment from 'moment';
+	import _ from 'lodash';
   moment.locale('zh-cn');
 
   import axios from 'axios';
@@ -52,7 +53,10 @@
     },
     computed: {
       withIcon() {
-        return this.$store.getters['articles/getArticlesWithIcon'];
+        const clist = this.$store.getters['articles/getArticlesWithIcon'];
+				return _.sortBy(clist, (item) => {
+					return item.createTime;
+				})
       },
     },
   };
