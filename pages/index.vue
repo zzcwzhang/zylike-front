@@ -80,15 +80,6 @@ export default {
 			}
 		}
 
-		// 加载IO通信
-		const socket = io('http://localhost:8082');
-		socket.on('news', function(data) {
-			console.log('get news');
-			socket.emit('message', { message: 'test'});
-		})
-		socket.on('server_message', (data) => {
-			console.log({ data });
-		})
 	},
 	computed: {
 		withIcon() {

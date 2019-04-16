@@ -55,6 +55,7 @@ module.exports = {
 	mode: 'universal',
 	env: {
 		NODE_ENV: process.env.NODE_ENV,
+		IO_URL: process.env.NODE_ENV == 'development' ? 'http://localhost:8082' : '',
 	},
 
 	// 动态路由

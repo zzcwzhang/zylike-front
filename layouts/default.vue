@@ -104,6 +104,7 @@
 		});
 	}
 
+	import io from 'socket.io-client'
   export default {
     components: {
       Popup,
@@ -112,6 +113,19 @@
 
 			const env =  process.env.NODE_ENV;
 			await this.initialData();
+
+			// 加载IO通信
+			console.log( process.env.IO_URL );
+			if ( !!process.env.IO_URL ) {
+				const socket = io( process.env.IO_URL );
+				socket.on('news', function(data) {
+					console.log('get news');
+					socket.emit('message', { message: 'test'});
+				})
+				socket.on('server_message', (data) => {
+					console.log({ data });
+				})
+			}
 
 			// 设置scrollreveal插件,添加滚动效果
       if (process.client) {
