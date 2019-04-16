@@ -5,33 +5,55 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 const axios = require('axios');
 
-const axiosConfig = process.env.NODE_ENV == 'development' ?
-	{
-	axios: {
-		proxy: true,
-    credentials: true,
-    debug: true,
-    retry: false,
-	},
-	proxy: {
-		'/api': {
-			target: 'https://manage.zylike.com',
-			pathRewrite: {
-				'^/api': '/api',
+let axiosConfig = {};
+if (process.env.NODE_ENV == 'development') {
+	axiosConfig = {
+		axios: {
+			baseURL: 'http://localhost:8082',
+			proxy: true,
+			credentials: true,
+			debug: true,
+			retry: true,
+		},
+		proxy: {
+			'/api': {
+				target: 'https://manage.zylike.com',
+				pathRewrite: {
+					'^/api': '/api',
+				}
 			}
-		}
-	},
+		},
+	}
+} else if (process.env.NODE_ENV == 'remote') {
+	axiosConfig = {
+		axios: {
+			proxy: true,
+			credentials: true,
+			debug: true,
+			retry: false,
+		},
+		proxy: {
+			'/api': {
+				target: 'https://manage.zylike.com',
+				pathRewrite: {
+					'^/api': '/api',
+				}
+			}
+		},
+	}
+} else if (process.env.NODE_ENV == 'production') {
+	axiosConfig = {
+		axios: {
+			baseURL: 'https://manage.zylike.com',
+			retry: true
+		},
+	}
+}
 
-} : {
-  axios: {
-    baseURL:  'https://manage.zylike.com',
-    retry: true
-  },
-};
 
 module.exports = {
 	mode: 'universal',
-	env : {
+	env: {
 		NODE_ENV: process.env.NODE_ENV,
 	},
 
@@ -54,7 +76,7 @@ module.exports = {
 	 ** Headers of the page
 	 */
 	head: {
-		title: process.env.NODE_ENV == 'development' ?  'dev' : "欢迎来到zylike技术博客",
+		title: process.env.NODE_ENV == 'development' ? 'dev' : "欢迎来到zylike技术博客",
 		meta: [{
 				charset: 'utf-8'
 			},
@@ -68,9 +90,12 @@ module.exports = {
 				content: "技术，分享，前端，后端，运维，服务器，人生，阅读，技术英语, 设计"
 			}
 		],
-		script: [
-			{ src: 'https://manage.zylike.com/api/cloudserver/iconfont/url' },
-			{ src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61' },
+		script: [{
+				src: 'https://manage.zylike.com/api/cloudserver/iconfont/url'
+			},
+			{
+				src: 'https://hm.baidu.com/hm.js?80921b763690ec22c4b1aaabdba02e61'
+			},
 		],
 		link: [{
 				rel: 'icon',
