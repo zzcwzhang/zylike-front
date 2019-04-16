@@ -43,6 +43,9 @@ import axios from 'axios';
 import ArticleTitle from '@/components/ArticleTitle';
 import _ from 'lodash';
 
+import io from 'socket.io-client'
+
+
 export default {
 	name: 'article',
 	components: {
@@ -76,6 +79,16 @@ export default {
 				}
 			}
 		}
+
+		// 加载IO通信
+		const socket = io('http://localhost:8082');
+		socket.on('news', function(data) {
+			console.log('get news');
+			socket.emit('message', { message: 'test'});
+		})
+		socket.on('server_message', (data) => {
+			console.log({ data });
+		})
 	},
 	computed: {
 		withIcon() {
