@@ -1,12 +1,12 @@
 <template>
   <v-dialog max-width="600px" v-model="dialog">
     <v-btn flat slot="activator" class="success">随便说说</v-btn>
-		<p v-if="mlist.length > 0" v-for="m in mlist" :key="m">{{m}}</p>
     <v-card>
       <v-card-title>
         <h2>随便说说</h2>
       </v-card-title>
       <v-card-text>
+				<p v-if="mlist.length > 0" v-for="m in mlist" :key="m">{{m}}</p>
         <v-form class="px-3" ref="form">
           <v-text-field label="内容" v-model="message" prepend-icon="folder" :rules="inputRules"></v-text-field>
           <v-btn :loading="loading" flat class="success mx-0 mt-3" @click="submit">发送</v-btn>
@@ -22,7 +22,7 @@
     name: '',
     data() {
       return {
-        mlist: [],
+        mlist: ['dd', 'ccc'],
         socket: null,
         message: '',
         inputRules: [
