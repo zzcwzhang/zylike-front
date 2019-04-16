@@ -10,6 +10,7 @@
         <p class="subheading mt-1">Zhang Yuan</p>
         <v-flex class="mt-4 mb-3">
           <Popup></Popup>
+          <freeChat></freeChat>
         </v-flex>
       </v-layout>
       <v-list>
@@ -40,10 +41,10 @@
           <span>排列</span>
         </v-btn>
         <v-list>
-					<v-list-tile v-for="link of sortMenu" :key="link.title" @click="setArticlesOrder(link.value)">
-						<v-list-tile-action>
-							<v-icon v-if="link.value == articlesOrder">done</v-icon>
-						</v-list-tile-action>
+          <v-list-tile v-for="link of sortMenu" :key="link.title" @click="setArticlesOrder(link.value)">
+            <v-list-tile-action>
+              <v-icon v-if="link.value == articlesOrder">done</v-icon>
+            </v-list-tile-action>
             <v-list-tile-title>{{ link.title }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -88,62 +89,52 @@
 
 <script>
   import Popup from '@/components/Popup';
+  import freeChat from '@/components/freeChat';
 
-	function setupScrollReveal() {
-		const scrollReveal = require('scrollreveal').default;
-		scrollReveal().reveal('.reveal-top', {
-			origin: 'bottom',
-			reset: false,
-			mobile: true,
-			distance: '150%',
-			opacity: 0,
-			rotate: {
-				x: 20,
-				z: 20,
-			}
-		});
-	}
+  function setupScrollReveal() {
+    const scrollReveal = require('scrollreveal').default;
+    scrollReveal().reveal('.reveal-top', {
+      origin: 'bottom',
+      reset: false,
+      mobile: true,
+      distance: '150%',
+      opacity: 0,
+      rotate: {
+        x: 20,
+        z: 20,
+      }
+    });
+  }
 
-	import io from 'socket.io-client'
   export default {
     components: {
       Popup,
+      freeChat,
+    },
+    created() {
     },
     async mounted() {
+      const env = process.env.NODE_ENV;
+      await this.initialData();
 
-			const env =  process.env.NODE_ENV;
-			await this.initialData();
 
-			// 加载IO通信
-			console.log( process.env.IO_URL );
-			if ( !!process.env.IO_URL ) {
-				const socket = io( process.env.IO_URL );
-				socket.on('news', function(data) {
-					console.log('get news');
-					socket.emit('message', { message: 'test'});
-				})
-				socket.on('server_message', (data) => {
-					console.log({ data });
-				})
-			}
-
-			// 设置scrollreveal插件,添加滚动效果
+      // 设置scrollreveal插件,添加滚动效果
       if (process.client) {
-				setupScrollReveal();
+        setupScrollReveal();
       }
     },
-		methods: {
-			async initialData() {
-				const articles = await this.$axios.get('/api/article/list').then(res => res.data).then(resdata => resdata.data);;
-				const subjects = await this.$axios.get('/api/subject/all').then(res => res.data).then(resdata => resdata.data);
-				this.$store.commit('articles/setList', articles);
-				this.$store.commit('articles/setSubjects', subjects);
-			},
+    methods: {
+      async initialData() {
+        const articles = await this.$axios.get('/api/article/list').then(res => res.data).then(resdata => resdata.data);;
+        const subjects = await this.$axios.get('/api/subject/all').then(res => res.data).then(resdata => resdata.data);
+        this.$store.commit('articles/setList', articles);
+        this.$store.commit('articles/setSubjects', subjects);
+      },
 
-			setArticlesOrder(in_order) {
-				this.$store.commit('articles/setOrder', in_order);
-			},
-		},
+      setArticlesOrder(in_order) {
+        this.$store.commit('articles/setOrder', in_order);
+      },
+    },
     computed: {
       sysAlert() {
         return this.$store.state.sys_alert;
@@ -166,12 +157,13 @@
           this.$store.commit('articles/setSearchText', val);
         }
       },
-			articlesOrder() {
-				return this.$store.state.articles.order;
-			}
+      articlesOrder() {
+        return this.$store.state.articles.order;
+      }
     },
     data() {
       return {
+        socket: '',
         clipped: false,
         drawer: false,
         fixed: false,
@@ -261,6 +253,10 @@
         }
 
       }
+    },
+    deforeDestroy() {
+      // 离开网站时才会触发，而不是离开组件
+      this.socket.disconnect();
     },
   }
 </script>

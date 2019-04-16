@@ -43,9 +43,6 @@ import axios from 'axios';
 import ArticleTitle from '@/components/ArticleTitle';
 import _ from 'lodash';
 
-import io from 'socket.io-client'
-
-
 export default {
 	name: 'article',
 	components: {
