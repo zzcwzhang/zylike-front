@@ -1,9 +1,9 @@
 <template>
   <v-dialog max-width="600px" v-model="dialog">
-    <v-btn flat slot="activator" class="success">随便说说</v-btn>
+    <v-btn flat slot="activator" class="success">匿名聊天</v-btn>
     <v-card>
       <v-card-title>
-        <h2>随便说说</h2>
+        <h2>匿名聊天</h2>
       </v-card-title>
       <v-card-text>
 				<p v-if="mlist.length > 0" v-for="m in mlist" :key="m">{{m}}</p>
@@ -22,11 +22,11 @@
     name: '',
     data() {
       return {
-        mlist: ['dd', 'ccc'],
+        mlist: [],
         socket: null,
         message: '',
         inputRules: [
-          v => v.length >= 3 || '最少输入3个单词',
+          v => v.length >= 1 || '最少输入1个单词',
         ],
         loading: false,
         dialog: false,
@@ -49,17 +49,19 @@
           this.socket = io(process.env.IO_URL);
           this.socket.on('chat', (data) => {
             this.loading = false;
-            this.mlist = data.list;
+						const { mode, message } = data;
+						// 根据不同模式处理不同方式
+						if( mode == 'append') {
+							this.mlist.push(message);
+						} else if ( mode == 'refresh' ) {
+							this.mlist = message;
+						} else {
+							throw new Error('unexpect chat room mode');
+						}
           })
-          this.socket.on('news', (data) => {
-            this.socket.emit('message', {
-              message: 'test'
-            });
-          })
-          this.socket.on('server_message', (data) => {
-            console.log({
-              data
-            });
+          this.socket.on('chat_init', (data) => {
+            this.loading = false;
+						this.mlist = data.list;
           })
         }
       },
