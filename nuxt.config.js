@@ -55,7 +55,7 @@ module.exports = {
 	mode: 'universal',
 	env: {
 		NODE_ENV: process.env.NODE_ENV,
-		IO_URL: process.env.NODE_ENV == 'development' ? 'http://localhost:8082' : '',
+		IO_URL: process.env.NODE_ENV == 'development' ? 'http://localhost:8082' : 'https://manage.zylike.com',
 	},
 
 	// 动态路由
