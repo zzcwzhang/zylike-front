@@ -34,7 +34,6 @@
     },
     watch: {
       dialog(nv, ov) {
-        console.log(nv);
         if (nv) {
           this.openSocket();
         } else {
