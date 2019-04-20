@@ -65,8 +65,8 @@
         }
       },
 			closeSocket() {
-				this.socket.disconnect();
-				this.socket = null;
+				/* this.socket.disconnect(); */
+				/* this.socket = null; */
 			},
       submit() {
         this.loading = true;
