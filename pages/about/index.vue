@@ -4,9 +4,6 @@
 			<v-flex xs12 sm8 md6 lg4 xl4 d-flex>
 				<img :src="icon" alt="">
 			</v-flex>
-			<h1>自我介绍</h1>
-			<p class="ma-3">一个只会代码，不会设计的设计师</p>
-			<p class="ma-3">全栈开发者, 毕业于沈阳理工大学计算机科学与技术, 目前待业在家</p>
 			<h1>技术栈</h1>
 			<h3 class="ma-3"> 
 				主要技术：
@@ -60,7 +57,6 @@
 				</v-tooltip>
 			</v-layout>
 
-
 			<v-card flat v-for="project in projects" :key="project.title">
 				<v-layout row wrap :class="`pa-3 project ${project.status}`">
 					<v-flex sx12 md6>
@@ -94,8 +90,8 @@
 			return {
         icon: zyicon,
 				projects: [
-					{ title: 'Design a new website', person: 'The Net Ninja', due: '126 Jan 2019', status:'ongoing'},
-					{ title: 'website server', person: 'me', due: '126 Jan 2019', status:'overdue'},
+					{ title: 'zylike', person: 'zy', due: '126 Jan 2019', status:'ongoing'},
+					{ title: 'website server', person: 'zy', due: '126 Jan 2019', status:'overdue'},
 					{ title: 'JumpStart', person: 'babazixun', due: '2018', status:'complete'},
 					{ title: 'HongXue/Caishang', person: 'babazixun', due: '2018', status:'complete'},
 				]

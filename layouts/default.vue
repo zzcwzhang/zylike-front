@@ -197,7 +197,7 @@
           },
           {
             icon: 'code',
-            title: '源码',
+            title: '源码(需要翻墙)',
             to: '/inspire'
           },
           {
@@ -207,15 +207,23 @@
           }
         ],
         itemsRight: [{
-            title: 'localhost:3000',
-            url: 'http://localhost:3000',
+            title: '百度统计',
+            url: 'https://tongji.baidu.com/',
           },
           {
-            title: 'localhost:8083',
-            url: 'http://localhost:8083'
+            title: '代码托管gitHub',
+            url: 'https://github.com/zzcwzhang/zylike-front'
           },
           {
-            title: 'CMS',
+            title: '日志sentry',
+            url: 'https://sentry.io/organizations/indie-developer/issues/?project=1416522&statsPeriod=14d&utc=false'
+          },
+          {
+            title: '自动部署Netlify',
+            url: 'https://www.netlify.com/'
+          },
+          {
+            title: '内容管理CMS',
             url: 'https://manage.zylike.com',
           },
           {
@@ -223,12 +231,8 @@
             url: 'https://codesandbox.io/s/github/zzcwzhang/zylike-front',
           },
           {
-            title: '百度一下',
-            url: 'https://www.baidu.com',
-          },
-          {
-            title: '英语学习',
-            url: 'https://www.quora.com/',
+            title: '前端框架Vuetify',
+            url: 'https://vuetifyjs.com/zh-Hans/',
           },
 
         ],
