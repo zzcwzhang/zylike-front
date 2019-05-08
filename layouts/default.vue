@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-layout column align-center>
         <v-flex class="mt-5">
-          <Login showLogin.sync="showLogin"></Login>
+					<Login :afterLogin="initialArticles"></Login>
         </v-flex>
         <p class="subheading mt-1">Zhang Yuan</p>
         <v-flex class="mt-4 mb-3">
@@ -122,11 +122,18 @@
     },
     methods: {
       async initialData() {
+
         const articles = await this.$axios.get('/api/article/list').then(res => res.data).then(resdata => resdata.data);;
         const subjects = await this.$axios.get('/api/subject/all').then(res => res.data).then(resdata => resdata.data);
+
         this.$store.commit('articles/setList', articles);
         this.$store.commit('articles/setSubjects', subjects);
       },
+
+			async initialArticles() {
+        const articles = await this.$axios.get('/api/article/list').then(res => res.data).then(resdata => resdata.data);;
+        this.$store.commit('articles/setList', articles);
+			},
 
       setArticlesOrder(in_order) {
         this.$store.commit('articles/setOrder', in_order);

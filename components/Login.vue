@@ -25,7 +25,7 @@
 <script>
   export default {
     name: '',
-		params: ['showLogin'],
+		props: ['afterLogin'],
 		data() {
 			return {
 				dialog: false,
@@ -39,11 +39,15 @@
 		},
 		methods: {
 			submit() {
-        const res = this.$axios.post('https://manage.zylike.com/api/user/login', {
+        this.$axios.post('https://manage.zylike.com/api/user/login', {
 					user: this.username,
 					pass: this.pass,
-				}).then( data => {
-					console.log({ data });
+				}).then( res => { return res.data; }).then( resdata => {
+					const { success, info } = resdata;
+					if(success) {
+						this.afterLogin();
+						this.dialog = false;
+					}
 				});
 			}
 		},
