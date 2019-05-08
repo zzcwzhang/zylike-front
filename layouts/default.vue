@@ -10,7 +10,6 @@
         <p class="subheading mt-1">Zhang Yuan</p>
         <v-flex class="mt-4 mb-3">
           <Popup></Popup>
-          <freeChat></freeChat>
         </v-flex>
       </v-layout>
       <v-list>
@@ -89,7 +88,6 @@
 
 <script>
   import Popup from '@/components/Popup';
-  import freeChat from '@/components/freeChat';
 
   function setupScrollReveal() {
     const scrollReveal = require('scrollreveal').default;
@@ -109,7 +107,6 @@
   export default {
     components: {
       Popup,
-      freeChat,
     },
     created() {
     },
