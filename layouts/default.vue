@@ -3,9 +3,7 @@
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-layout column align-center>
         <v-flex class="mt-5">
-          <v-avatar size="100">
-            <img src="http://oss.zylike.com/images/zhangyuan.png" alt="">
-          </v-avatar>
+          <Login showLogin.sync="showLogin"></Login>
         </v-flex>
         <p class="subheading mt-1">Zhang Yuan</p>
         <v-flex class="mt-4 mb-3">
@@ -88,6 +86,7 @@
 
 <script>
   import Popup from '@/components/Popup';
+  import Login from '@/components/Login';
 
   function setupScrollReveal() {
     const scrollReveal = require('scrollreveal').default;
@@ -107,6 +106,7 @@
   export default {
     components: {
       Popup,
+      Login,
     },
     created() {
     },

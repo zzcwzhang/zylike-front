@@ -18,7 +18,10 @@
 # less -r
 
 --ignore-dir=.idea/
+--ignore-dir=.nuxt/
 --ignore-dir=node_modules/
+--ignore-dir=yarn-error.log
+--ignore-dir=yarn.lock
 
 #make sure ack knows how to search common filetypes used in rails projects
 --type-add=css=scss
@@ -33,3 +36,4 @@
 --type-set=jade=.jade
 --type-set=feature=.feature
 --type-set=json=.json
+

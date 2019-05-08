@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import ArticleTitle from '@/components/ArticleTitle';
 import _ from 'lodash';
 
