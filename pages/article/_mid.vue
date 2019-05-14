@@ -96,6 +96,8 @@
       backToTop() {
         if (process.client) {
           document.documentElement.scrollTop = 0
+					const _hmt = window._hmt || [];
+					_hmt.push(['_trackEvent', 'scrollTop', 'click' ]);
           return;
         }
       }
