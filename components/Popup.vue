@@ -1,6 +1,6 @@
 <template>
 	<v-dialog max-width="600px" v-model="dialog">
-		<v-btn flat slot="activator" class="success">给我留言</v-btn>
+		<v-btn id="leave-message" flat slot="activator" class="success">给我留言</v-btn>
 		<v-card>
 			<v-card-title>
 				<h2>留言条</h2>
