@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="`/article/${md.mid}`">
-    <v-hover>
+		<v-hover @click="() => { _hmt.push(['_trackEvent', 'artcile', 'click', md.title])}">
       <v-card slot-scope="{ hover }" :class="`ma-3 elevation-${hover ? 12 : 2}`">
         <v-layout wrap row>
 					<v-flex xs12 md4 class="text-lg-center pa-2" v-if="md.icon!=''">
